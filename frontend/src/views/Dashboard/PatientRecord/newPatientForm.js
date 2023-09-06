@@ -9,31 +9,31 @@ const NewPatientForm = () => {
   const [sex, setSex] = useState('');
 
   const handleSubmit = async (e) => {
-	e.preventDefault();
+    e.preventDefault();
 
-	try {
-	  await axios.post('/patients', {
-		firstName,
-		lastName,
-		dateOfBirth,
-		sex
-	  }).then(response => {
-		if(response.data.success) {
-		  alert('Patient data successfully added!');
-		} else {
-		  alert('There was a problem: ' + response.data.msg);
-		}
-	  }).catch(error => {
-		if (error.response) {
-		  alert('Error: ' + error.response.data.msg);
-		} else {
-		  alert('There has been an error.');
-		}
-	  });
-	} catch (err) {
-	  console.error(err);
-	  alert('There was an error when submitting the form.');
-	}
+    try {
+      await axios.post(`patient`, {
+        firstName,
+        lastName,
+        dateOfBirth,
+        sex
+      }).then(response => {
+        if(response.data.success) {
+          alert('Patient data successfully added!');
+        } else {
+          alert('There was a problem: ' + response.data.msg);
+        }
+      }).catch(error => {
+        if (error.response) {
+          alert('Error: ' + error.response.data.msg);
+        } else {
+          alert('There has been an error.');
+        }
+      });
+    } catch (err) {
+      console.error(err);
+      alert('There was an error when submitting the form.');
+    }
   };
 
   return (

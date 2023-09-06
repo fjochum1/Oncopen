@@ -11,12 +11,9 @@ export default class Patient {
   @Column({ type: 'text', nullable: false })
   lastName!: string;
 
-  @Column({ type: 'number', nullable: false })
-  age!: string;
+  @Column({ type: 'text' })
+  dateOfBirth!: string;
 
-  @Column({ type: 'datetime'})
-  dateOfBirth?: string;
-
-  @Column({type: 'text'})
-  sex!: string
+  @Column({ type: 'text' })
+  sex!: string;
 }

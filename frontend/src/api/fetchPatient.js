@@ -1,10 +1,11 @@
 import axios from './index.js';
 
+/* The fetchPatients function sends a GET request to the backend API
+to find the data of the patients in the database. */
 const fetchPatients = async () => {
   try {
-    const response = await axios.get('/patients');
+    const response = await axios.get(`patientGet`);
 
-    // Assuming the server returns the data array in the response's body
     return response.data;
 
   } catch (error) {

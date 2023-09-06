@@ -1,9 +1,4 @@
 import bcrypt from 'bcrypt';
-/*
-
-Copyright (c) 2019 - present AppSeed.us
-
-*/
 import express from 'express';
 import Joi from 'joi';
 import jwt from 'jsonwebtoken';
@@ -14,7 +9,6 @@ import User from '../models/user';
 import { connection } from '../server/database';
 import { logoutUser } from '../controllers/logout.controller';
 
-// eslint-disable-next-line new-cap
 const router = express.Router();
 // Route: <HOST>:PORT/api/users/
 
@@ -62,6 +56,7 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+  console.log('POST request to /users/login received');
   // Joy Validation
   const result = userSchema.validate(req.body);
   if (result.error) {

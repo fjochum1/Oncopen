@@ -18,7 +18,7 @@ import {
 	Thead,
 	Tr
   } from "@chakra-ui/react";
-  import React, { useMemo } from "react";
+  import React, { useMemo, useState, useEffect } from "react";
   import { GrFormNext, GrFormPrevious } from "react-icons/gr";
   import {
 	TiArrowSortedDown,
@@ -33,10 +33,17 @@ import {
   } from "react-table";
 
   function SearchTable1(props) {
-	const { columnsData, tableData } = props;
+	const { columnsData, tableData, onRowClick } = props;
+
+	const [localTableData, setLocalTableData] = useState([]); // <-- Local state
+
+	useEffect(() => {
+	  setLocalTableData(JSON.parse(JSON.stringify(props.tableData))); // <-- Deep copy
+	}, [props.tableData]);
 
 	const columns = useMemo(() => columnsData, []);
-	const data = useMemo(() => tableData, []);
+	const data = useMemo(() => localTableData, [localTableData]);
+	//const data = useMemo(() => tableData, []);
 
 	const tableInstance = useTable(
 	  {
@@ -161,7 +168,7 @@ import {
 			  {page.map((row) => {
 				prepareRow(row);
 				return (
-				  <Tr {...row.getRowProps()}>
+				  <Tr {...row.getRowProps()} onClick={() => onRowClick(row.original)}>
 					{row.cells.map((cell) => {
 					  return (
 						<Td {...cell.getCellProps()} fontSize={{ sm: "14px" }}>
