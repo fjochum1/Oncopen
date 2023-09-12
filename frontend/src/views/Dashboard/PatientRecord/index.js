@@ -66,7 +66,7 @@ const PatientRecord = () => {
         </Modal>
       </Flex>
       <SearchTable1 columnsData={columnsData} tableData={patientsData} onRowClick={(rowData) => {
-          history.push(`/Patient_profile/${rowData.id}`);
+          history.push(`/patient/${rowData.id}/profile`);
       }}/>
     </Flex>
   );

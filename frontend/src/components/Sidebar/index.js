@@ -8,12 +8,12 @@ import SidebarContent from "./SidebarContent";
 
 // FUNCTIONS
 
-function Sidebar(props) {
+function Sidebar({id, ...props}) {
   // to check for active links and opened collapses
   const mainPanel = React.useRef();
   let variantChange = "0.2s linear";
 
-  const { logoText, routes, sidebarVariant } = props;
+  const { logoText, routes, sidebarVariant, layoutType } = props;
 
   //  BRAND
   //  Chakra Color Mode
@@ -51,14 +51,13 @@ function Sidebar(props) {
         logoText={"PURITY UI DASHBOARD"}
         display="none"
         sidebarVariant={sidebarVariant}
+		layoutType={layoutType}
+		id={id}
         />
         </Box>
       </Box>
     </Box>
   );
 }
-
-
-
 
 export default Sidebar;

@@ -7,9 +7,12 @@ import passport from 'passport';
 
 import initPassport from '../config/passport';
 import routes from '../routes/users';
+import sessionRoute from '../routes/session.route'
 import patientRoute from '../routes/patient';
 import patientGetRoute from '../routes/patientGet';
-import sessionRoute from '../routes/session.route'
+import userGetRoute from '../routes/userGet';
+import patientGetIdRoute from '../routes/patientGetId';
+
 import { connect } from './database';
 
 // Instantiate express
@@ -44,8 +47,10 @@ server.use(express.json());
 
 // Initialize routes middleware
 server.use('/api/users', routes);
+server.use('/api/sessions', sessionRoute)
 server.use('/api/patient', patientRoute);
 server.use('/api/patientGet', patientGetRoute);
-server.use('/api/sessions', sessionRoute)
+server.use('/api/userGet', userGetRoute);
+server.use('/api/patientGetId', patientGetIdRoute);
 
 export default server;

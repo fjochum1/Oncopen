@@ -1,42 +1,29 @@
 import React from "react";
 import { useAuth } from "auth-context/auth.context";
+import { useHistory } from 'react-router-dom';
 
 import Profile from "views/Dashboard/Profile";
 import SignIn from "views/Auth/SignIn.js";
 import SignUp from "views/Auth/SignUp.js";
-import FirstConsultation from 'views/Dashboard/FirstConsultation';
+import LogOut from "views/Auth/LogOut.js";
 import PatientRecord from 'views/Dashboard/PatientRecord/index';
-import NewPatientForm from 'views/Dashboard/PatientRecord/newPatientForm';
 
 import {
 	PersonIcon,
 	DocumentIcon,
-	RocketIcon,
+	RocketIcon
 } from "components/Icons/Icons";
 
 export function useRoutes() {
 	let { user } = useAuth();
     // When user is logged in
     const authenticatedRoutes = [
-        //{
-        //    path: "/first-consultation",
-        //    name: "First Consultation",
-        //    component: FirstConsultation,
-        //    layout: "/admin",
-        //},
         {
             path: "/patient-record",
             name: "Patient Record",
             component: PatientRecord,
             layout: "/admin",
         },
-        //{
-        //    path: "/new_patient",
-        //    name: "New Patient",
-        //    component: NewPatientForm,
-        //    layout: "/admin",
-        //    hidden: true,
-        //},
         {
             name: "ACCOUNT PAGES",
             category: "account",
@@ -50,6 +37,12 @@ export function useRoutes() {
                     component: Profile,
                     layout: "/admin",
                 },
+				{
+                    path: "/logout",
+                    name: "Log out",
+                    component: LogOut,
+                    layout: "/admin",
+                }
             ],
         },
     ];
@@ -75,7 +68,7 @@ export function useRoutes() {
                     secondaryNavbar: true,
                     component: SignUp,
                     layout: "/auth",
-                },
+                }
             ],
         },
     ];

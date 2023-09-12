@@ -12,17 +12,18 @@ import IconBox from "components/Icons/IconBox";
 //import { CreativeTimLogo } from "components/Icons/Icons";
 import logo from 'assets/img/LogoOncopenGrey.png';
 import { Separator } from "components/Separator/Separator";
-//import { SidebarHelp } from "components/Sidebar/SidebarHelp";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import useRoutes from "routes";
+import useRoutesPatient from "routesPatient";
+import { useParams } from 'react-router-dom';
+
 
 // this function creates the links and collapses that appear in the sidebar (left menu)
 
 
-const SidebarContent = ({ logoText}) => {
-
-  const routes = useRoutes();
+const SidebarContent = ({ logoText, layoutType, id}) => {
+	const routes = layoutType === 'admin' ? useRoutes() : useRoutesPatient();
     // to check for active links and opened collapses
   let location = useLocation();
   // this is for the rest of the collapses
@@ -70,7 +71,7 @@ const SidebarContent = ({ logoText}) => {
         );
       }
       return (
-        <NavLink to={prop.layout + prop.path} key={prop.name}>
+        <NavLink to={`${prop.layout}${prop.path.replace(':id', id)}`} key={prop.name}>
           {activeRoute(prop.layout + prop.path) === "active" ? (
             <Button
               boxSize="initial"
@@ -203,7 +204,7 @@ const SidebarContent = ({ logoText}) => {
           <Stack direction="column" mb="40px">
             <Box>{links}</Box>
           </Stack>
-          {/*<SidebarHelp />*/}
+          {/*<SidebarLogOut/>*/}
     </>
   )
 }

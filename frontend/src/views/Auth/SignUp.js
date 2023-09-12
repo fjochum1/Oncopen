@@ -113,6 +113,34 @@ import {
 			  Register
 			</Text>
 			<FormControl>
+			<FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+				Firstname
+			  </FormLabel>
+			  <Input
+				fontSize='sm'
+				ms='4px'
+				borderRadius='15px'
+				type='text'
+				placeholder='Your firstname'
+				mb='24px'
+				size='lg'
+				name="firstname"
+				onChange={handleChange}
+			  />
+			  <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+				Name
+			  </FormLabel>
+			  <Input
+				fontSize='sm'
+				ms='4px'
+				borderRadius='15px'
+				type='text'
+				placeholder='Your family name'
+				mb='24px'
+				size='lg'
+				name="name"
+				onChange={handleChange}
+			  />
 			  <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
 				Username
 			  </FormLabel>

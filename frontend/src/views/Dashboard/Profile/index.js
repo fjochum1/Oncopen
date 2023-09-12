@@ -1,67 +1,111 @@
-import React, { useState } from "react";
-import { Stack, Heading, Box, FormControl, FormLabel, Input, Select, Button, ButtonGroup} from "@chakra-ui/react";
+import {
+	Flex,
+	Grid,
+	useColorModeValue,
+	Modal,
+	ModalOverlay,
+	ModalContent,
+	ModalHeader,
+	ModalFooter,
+	ModalBody,
+	ModalCloseButton,
+	Button
+} from "@chakra-ui/react";
+import ProfileBgImage from "assets/img/BackgroundProfile.png";
+import React, { useState, useEffect } from "react";
+import { FaPenFancy } from "react-icons/fa";
+import Header from "./components/Header";
+import ProfileInformation from "./components/ProfileInformation";
+import FinessInformation from "./components/FinessInformation";
+import Settings from './settings';
+
+// Importing the fetchUser function
+import fetchCurrentUser from "../../../api/fetchCurrentUser.js";
 
 function Profile() {
-  const name = localStorage.getItem("name");
-  const email = localStorage.getItem("email");
+	const textColor = useColorModeValue("gray.700", "white");
+	const bgProfile = useColorModeValue(
+		"hsla(0,0%,100%,.8)",
+		"linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
+	);
 
-  const [title, setTitle] = useState("");
-  const [rpps, setRpps] = useState("");
-  const [finess, setFiness] = useState("");
-  const [institution, setInstitution] = useState("");
-  const [address, setAddress] = useState("");
+	// State to hold user data
+	const [userData, setUserData] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here, you can handle form submission, e.g. save data to localStorage
-  };
+	const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
-  return (
-    <Box fontFamily="Roboto, monospace" w='60%' justifyContent='center' mb='60px' mt='20px' as="form" onSubmit={handleSubmit}>
-      <Heading mb={5} fontSize="2xl" fontFamily="Inconsolata" color="#859e91" textDecoration="underline">
-	  	Prescriber profile
-	  </Heading>
-	  <Stack spacing={5}>
-	  	<FormControl isReadOnly>
-        	<FormLabel>Name</FormLabel>
-        	<Input type="text" value={name} />
-      	</FormControl>
-      	<FormControl isReadOnly>
-        	<FormLabel>Email</FormLabel>
-        	<Input type="email" value={email} />
-      	</FormControl>
-      	<FormControl>
-        	<FormLabel>Title</FormLabel>
-        	<Select value={title} onChange={(e) => setTitle(e.target.value)}>
-          	<option value="Mrs">Mrs</option>
-          	<option value="Ms">Ms</option>
-          	<option value="Dr">Dr</option>
-          	<option value="Pr">Pr</option>
-        	</Select>
-      	</FormControl>
-      	<FormControl>
-        	<FormLabel>RPPS Number</FormLabel>
-        	<Input type="number" value={rpps} onChange={(e) => setRpps(e.target.value)} />
-      	</FormControl>
-      	<FormControl>
-        	<FormLabel>FINESS</FormLabel>
-        	<Input type="text" value={finess} onChange={(e) => setFiness(e.target.value)} />
-      	</FormControl>
-      	<FormControl>
-        	<FormLabel>Institution Name</FormLabel>
-        	<Input type="text" value={institution} onChange={(e) => setInstitution(e.target.value)} />
-      	</FormControl>
-      	<FormControl>
-        	<FormLabel>Institution Address</FormLabel>
-        	<Input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-      	</FormControl>
-	  	<ButtonGroup spacing={20} mt={20}>
-			<Button backgroundColor="#859e91" color="white" _hover={{ bg: "#6b8478" }} _active={{ bg: "#5a6e60" }}>
-    			Validate
-  			</Button>
-	  	</ButtonGroup>
-	  </Stack>
-    </Box>
+	// Fetch user data when the component is mounted using the fetchCurrentUser function
+	useEffect(() => {
+		async function fetchData() {
+			const data = await fetchCurrentUser();
+			setUserData(data);
+		}
+		fetchData();
+	}, []);
+
+	const openSettingsModal = () => {
+		setIsSettingsOpen(true);
+	};
+
+	const closeSettingsModal = () => {
+		setIsSettingsOpen(false);
+	};
+
+	return (
+		<Flex direction='column'>
+			{userData && (
+				<>
+					<Header
+						backgroundHeader={ProfileBgImage}
+						backgroundProfile={bgProfile}
+						firstname={userData.firstname || "N/A"}
+						name={userData.name || "N/A"}
+						email={userData.email || "N/A"}
+						tabs={[
+							{
+								name: "SETTINGS",
+								icon: <FaPenFancy w='100%' h='100%' />,
+								action: openSettingsModal
+							}
+						]}
+					/>
+					<Grid templateColumns={{ sm: "1fr", xl: "repeat(2, 1fr)" }} gap='22px'>
+						<ProfileInformation
+							title={"Profile Information"}
+							speciality={userData.speciality || "N/A"}
+							titre={userData.titre || "N/A"}
+							firstname={userData.firstname || "N/A"}
+							name={userData.name || "N/A"}
+							username={userData.username || "N/A"}
+							mobile={userData.mobile || "N/A"}
+							email={userData.email || "N/A"}
+							RPPS={userData.RPPS || "N/A"}
+						/>
+						<FinessInformation
+							title={"Institution Information"}
+							nameInstitution={userData.nameInstitution || "N/A"}
+							address={userData.address || "N/A"}
+							postalCode={userData.postalCode || "N/A"}
+							city={userData.city || "N/A"}
+							country={userData.country || "N/A"}
+							nbInstitution={userData.nbInstitution || "N/A"}
+						/>
+					</Grid>
+					<Modal isOpen={isSettingsOpen} onClose={closeSettingsModal} size="xl">
+						<ModalOverlay />
+						<ModalContent maxW="1100px">
+							<ModalCloseButton />
+							<ModalBody>
+								<Settings closeSettingsModal={closeSettingsModal} />
+							</ModalBody>
+							<ModalFooter>
+								<Button variant="ghost" onClick={closeSettingsModal}>Close</Button>
+							</ModalFooter>
+						</ModalContent>
+					</Modal>
+				</>
+			)}
+		</Flex>
 	);
 }
 

@@ -1,0 +1,10 @@
+.container {
+    width: "100%";
+    alignSelf: "center";
+    justifyContent: "center",
+    marginTop: "16px";
+  }
+
+.insideListContainer {
+    marginTop: "-24px";
+  }

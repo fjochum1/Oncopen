@@ -1,5 +1,7 @@
 import axios from "./index";
 
+let base = "users";
+
 class AuthApi {
   static Login = (data) => {
     return axios.post(`${base}/login`, data);
@@ -12,8 +14,10 @@ class AuthApi {
   static Logout = (data) => {
     return axios.post(`${base}/logout`, data, { headers: { Authorization: `${data.token}` } });
   };
-}
 
-let base = "users";
+  static Edit = (data) => {
+    return axios.post(`${base}/edit`, data);
+  };
+}
 
 export default AuthApi;
