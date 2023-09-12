@@ -22,7 +22,6 @@ import { useParams } from 'react-router-dom';
 
 export default function PatientLayout(props) {
 	const { id } = useParams();
-	console.log("Accessed ID:", id);
 	const { ...rest } = props;
 	// states and functions
 	const [sidebarVariant, setSidebarVariant] = useState('transparent');

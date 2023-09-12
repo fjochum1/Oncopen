@@ -6,7 +6,7 @@ import Profile from "views/Dashboard/Profile";
 import SignIn from "views/Auth/SignIn.js";
 import SignUp from "views/Auth/SignUp.js";
 import LogOut from "views/Auth/LogOut.js";
-import PatientRecord from 'views/Dashboard/PatientRecord/index';
+import PatientRecord from 'views/Dashboard/Patients/PatientRecord/index';
 
 import {
 	PersonIcon,

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SearchTable1 from './Components/dataTables';
-import fetchPatients from '../../../api/fetchPatient';
+import fetchPatients from '../../../../api/fetchPatient';
 import { Flex, Button, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody } from '@chakra-ui/react';
-import NewPatientForm from 'views/Dashboard/PatientRecord/newPatientForm';
+import NewPatientForm from 'views/Dashboard/Patients/newPatientForm';
 import { useHistory } from 'react-router-dom';  // <-- Import this
 
 const PatientRecord = () => {
