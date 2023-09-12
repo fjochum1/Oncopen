@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
 const http_1 = __importDefault(require("http"));
 const server_1 = __importDefault(require("./server"));
+
+
 const { PORT } = process.env;
 http_1.default.createServer({}, server_1.default)
     .listen(PORT, () => {

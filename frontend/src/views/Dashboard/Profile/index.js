@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Stack, Heading, Box, FormControl, FormLabel, Input, Select, Button, ButtonGroup} from "@chakra-ui/react";
 
+
+
 function Profile() {
   const name = localStorage.getItem("name");
   const email = localStorage.getItem("email");

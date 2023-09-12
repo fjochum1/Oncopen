@@ -24,6 +24,9 @@ export default function Dashboard(props) {
 	const [ sidebarVariant, setSidebarVariant ] = useState('transparent');
 	const [ fixed, setFixed ] = useState(false);
 	const routes = useRoutes();
+
+
+	
 	// functions for changing the states from components
 	const getRoute = () => {
 		return window.location.pathname !== '/admin/full-screen-maps';

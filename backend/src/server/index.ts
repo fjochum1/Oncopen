@@ -11,6 +11,7 @@ import patientRoute from '../routes/patient';
 import patientGetRoute from '../routes/patientGet';
 import sessionRoute from '../routes/session.route'
 import { connect } from './database';
+import patientGetByIdRoute from '../routes/patientGetById'
 
 // Instantiate express
 const server = express();
@@ -47,5 +48,6 @@ server.use('/api/users', routes);
 server.use('/api/patient', patientRoute);
 server.use('/api/patientGet', patientGetRoute);
 server.use('/api/sessions', sessionRoute)
+server.use('/api/patientGetById', patientGetByIdRoute)
 
 export default server;

@@ -16,6 +16,7 @@ const passport_1 = __importDefault(require("passport"));
 const passport_2 = __importDefault(require("../config/passport"));
 const users_1 = __importDefault(require("../routes/users"));
 const session_route_1 = __importDefault(require("../routes/session.route"));
+//const patientRouter = __importDefault(require("../routes/patientRouter"))
 const database_1 = require("./database");
 // Instantiate express
 const server = (0, express_1.default)();
@@ -32,5 +33,9 @@ server.use(express_1.default.json());
 // Initialize routes middleware
 server.use('/api/users', users_1.default);
 server.use('/api/sessions', session_route_1.default);
+//Ajout Lou
+// server.use('api/patientRouter', patientRouter.default)
+//
+
 exports.default = server;
 //# sourceMappingURL=index.js.map
