@@ -13,9 +13,17 @@ const axios = Axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
+// Intercept every request to add the token to the headers
 axios.interceptors.request.use(
   (config) => {
-    return Promise.resolve(config);
+    const storedUser = localStorage.getItem('user');
+    const user = storedUser && JSON.parse(storedUser);
+    const token = user?.token;
+
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
   },
   (error) => Promise.reject(error)
 );

@@ -1,5 +1,5 @@
 // Chakra imports
-import { ChakraProvider, Portal, useDisclosure, Button, Flex} from '@chakra-ui/react';
+import { ChakraProvider, Portal, useDisclosure, Button, Flex } from '@chakra-ui/react';
 import Configurator from 'components/Configurator/Configurator';
 import Footer from 'components/Footer/Footer.js';
 // Layout components
@@ -7,7 +7,7 @@ import AdminNavbar from 'components/Navbars/AdminNavbar.js';
 import Sidebar from 'components/Sidebar';
 import React, { useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { useRoutes } from 'routes.js';
+import { useRoutesPatient } from '../routesPatient.js';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
@@ -18,18 +18,19 @@ import FixedPlugin from '../components/FixedPlugin/FixedPlugin';
 import MainPanel from '../components/Layout/MainPanel';
 import PanelContainer from '../components/Layout/PanelContainer';
 import PanelContent from '../components/Layout/PanelContent';
-export default function Dashboard(props) {
+import { useParams } from 'react-router-dom';
+
+export default function PatientLayout(props) {
+	const { id } = useParams();
+	console.log("Accessed ID:", id);
 	const { ...rest } = props;
 	// states and functions
 	const [sidebarVariant, setSidebarVariant] = useState('transparent');
 	const [fixed, setFixed] = useState(false);
-	const routes = useRoutes();
-
-
-	
+	const routes = useRoutesPatient();
 	// functions for changing the states from components
 	const getRoute = () => {
-		return window.location.pathname !== '/admin/full-screen-maps';
+		return window.location.pathname !== '/patient/full-screen-maps';
 	};
 	const getActiveRoute = (routes) => {
 		let activeRoute = 'Default Brand Text';
@@ -71,6 +72,7 @@ export default function Dashboard(props) {
 		}
 		return activeNavbar;
 	};
+
 	const getRoutes = (routes) => {
 		return routes.map((prop, key) => {
 			if (prop.collapse) {
@@ -79,13 +81,14 @@ export default function Dashboard(props) {
 			if (prop.category === 'account') {
 				return getRoutes(prop.views);
 			}
-			if (prop.layout === '/admin') {
+			if (prop.layout === '/patient') {
 				return <Route path={prop.layout + prop.path} component={prop.component} key={key} />;
 			} else {
 				return null;
 			}
 		});
 	};
+
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	document.documentElement.dir = 'ltr';
 	// Chakra Color Mode
@@ -96,7 +99,8 @@ export default function Dashboard(props) {
 				logoText={'PURITY UI DASHBOARD'}
 				display='none'
 				sidebarVariant={sidebarVariant}
-				layoutType="admin"
+				layoutType="patient"
+				id={id}
 				{...rest}
 			/>
 			<MainPanel
@@ -119,7 +123,6 @@ export default function Dashboard(props) {
 						<PanelContainer>
 							<Switch>
 								{getRoutes(routes)}
-								<Redirect from='/admin' to='/admin/dashboard' />
 							</Switch>
 						</PanelContainer>
 					</PanelContent>

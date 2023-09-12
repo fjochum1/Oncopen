@@ -1,0 +1,23 @@
+/* Point.css */
+
+.innerContainer {
+	top: 0;
+	left: -4px;
+	width: 10px;
+	height: 10px;
+	background-color: #984cf8;
+	border-radius: 30px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0px 3px 8px rgba(152, 76, 248, 0.3);
+  }
+
+  .outerContainer {
+	width: 20px;
+	height: 20px;
+	border: 1px solid rgba(152, 76, 248, 0.1);
+	border-radius: 16px;
+	background-color: rgba(152, 76, 248, 0.05);
+  }

@@ -1,6 +1,6 @@
 // Chakra imports
 import {
-  Avatar,
+  //Avatar,
   Box,
   Button,
   Flex,
@@ -12,7 +12,8 @@ import React from "react";
 const Header = ({
   backgroundHeader,
   backgroundProfile,
-  avatarImage,
+ //avatarImage,
+  firstname,
   name,
   email,
   tabs,
@@ -69,20 +70,13 @@ const Header = ({
             direction={{ sm: "column", md: "row" }}
             w={{ sm: "100%" }}
             textAlign={{ sm: "center", md: "start" }}>
-            <Avatar
-              me={{ md: "22px" }}
-              src={avatarImage}
-              w='80px'
-              h='80px'
-              borderRadius='15px'
-            />
             <Flex direction='column' maxWidth='100%' my={{ sm: "14px" }}>
               <Text
                 fontSize={{ sm: "lg", lg: "xl" }}
                 color={textColor}
                 fontWeight='bold'
                 ms={{ sm: "8px", md: "0px" }}>
-                {name}
+                {firstname} {name}
               </Text>
               <Text
                 fontSize={{ sm: "sm", md: "md" }}
@@ -95,7 +89,7 @@ const Header = ({
           <Flex
             direction={{ sm: "column", lg: "row" }}
             w={{ sm: "100%", md: "50%", lg: "auto" }}>
-            <Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
+            <Button p='0px' bg='transparent' _hover={{ bg: "none" }} onClick={tabs[0].action}>
               <Flex
                 align='center'
                 w={{ sm: "100%", lg: "135px" }}
@@ -116,7 +110,7 @@ const Header = ({
                 </Text>
               </Flex>
             </Button>
-            <Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
+            {/*<Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
               <Flex
                 align='center'
                 w={{ lg: "135px" }}
@@ -152,7 +146,7 @@ const Header = ({
                   {tabs[2].name}
                 </Text>
               </Flex>
-            </Button>
+            </Button>*/}
           </Flex>
         </Flex>
       </Box>

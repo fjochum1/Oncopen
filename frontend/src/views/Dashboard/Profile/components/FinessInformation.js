@@ -6,16 +6,14 @@ import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
 import React from "react";
 
-const ProfileInformation = ({
+const FinessInformation = ({
   title,
-  speciality,
-  firstname,
-  name,
-  username,
-  titre,
-  mobile,
-  email,
-  RPPS,
+  nameInstitution,
+  address,
+  postalCode,
+  city,
+  country,
+  nbInstitution
 }) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
@@ -28,56 +26,48 @@ const ProfileInformation = ({
         </Text>
       </CardHeader>
       <CardBody px='5px'>
-        <Flex direction='column'>
-          <Text fontSize='md' color='gray.500' fontWeight='400' mb='30px'>
-            {speciality}
+		<Flex direction='column'>
+		  <Text fontSize='md' color='gray.500' fontWeight='400' mb='30px'>
+            {nameInstitution}
           </Text>
-		  <Flex align='center' mb='18px'>
-            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-              Title:{" "}
-            </Text>
-            <Text fontSize='md' color='gray.500' fontWeight='400'>
-              {titre}
-            </Text>
-          </Flex>
           <Flex align='center' mb='18px'>
             <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-              Full Name:{" "}
+              Address:{" "}
             </Text>
             <Text fontSize='md' color='gray.500' fontWeight='400'>
-			 {firstname} {name}
+              {address}
             </Text>
           </Flex>
 		  <Flex align='center' mb='18px'>
             <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-              Username:{" "}
+              Postal code:{" "}
             </Text>
             <Text fontSize='md' color='gray.500' fontWeight='400'>
-			 {username}
+              {postalCode}
             </Text>
           </Flex>
           <Flex align='center' mb='18px'>
             <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-              Mobile:{" "}
+              City:{" "}
             </Text>
             <Text fontSize='md' color='gray.500' fontWeight='400'>
-              {mobile}
+              {city}
             </Text>
           </Flex>
           <Flex align='center' mb='18px'>
             <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-              Email:{" "}
+              Country:{" "}
             </Text>
             <Text fontSize='md' color='gray.500' fontWeight='400'>
-              {email}
+              {country}
             </Text>
           </Flex>
-          <Flex align='center' mb='18px'>
+		  <Flex align='center' mb='18px'>
             <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-              RPPS:{" "}
+              Institution number:{" "}
             </Text>
             <Text fontSize='md' color='gray.500' fontWeight='400'>
-              {RPPS}
+              {nbInstitution}
             </Text>
           </Flex>
         </Flex>
@@ -86,4 +76,4 @@ const ProfileInformation = ({
   );
 };
 
-export default ProfileInformation;
+export default FinessInformation;

@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuth } from "auth-context/auth.context";
+import { useHistory } from 'react-router-dom';
 
 import Profile from "views/Dashboard/Profile";
 import SignIn from "views/Auth/SignIn.js";
@@ -8,45 +9,32 @@ import FirstConsultation from 'views/Dashboard/Patients/FirstConsultation';
 import PatientRecord from 'views/Dashboard/Patients/PatientRecord/index';
 import PatientProfile from 'views/Dashboard/Patients/PatientProfile/index'
 //import NewPatientForm from "views/Dashboard/Patients/PatientRecord/newPatientForm";
+import LogOut from "views/Auth/LogOut.js";
+import PatientRecord from 'views/Dashboard/PatientRecord/index';
 
 import {
 	PersonIcon,
 	DocumentIcon,
-	RocketIcon,
+	RocketIcon
 } from "components/Icons/Icons";
 
 export function useRoutes() {
 	let { user } = useAuth();
     // When user is logged in
     const authenticatedRoutes = [
-       
+
         {
             path: "/patient-profile/patients/:patientId",
             name: "Patient Profile",
             component: PatientProfile,
             layout: "/admin",
         },
-
-
-        // {
-        //    path: "/first-consultation",
-        //    name: "First Consultation",
-        //    component: FirstConsultation,
-        //    layout: "/admin",
-        // },
         {
             path: "/patient-record",
             name: "Patient Record",
             component: PatientRecord,
             layout: "/admin",
         },
-        // {
-        //    path: "/new_patient",
-        //    name: "New Patient",
-        //    component: NewPatientForm,
-        //    layout: "/admin",
-        //    hidden: true,
-        // },
         {
             name: "ACCOUNT PAGES",
             category: "account",
@@ -60,6 +48,12 @@ export function useRoutes() {
                     component: Profile,
                     layout: "/admin",
                 },
+				{
+                    path: "/logout",
+                    name: "Log out",
+                    component: LogOut,
+                    layout: "/admin",
+                }
             ],
         },
     ];
@@ -85,7 +79,7 @@ export function useRoutes() {
                     secondaryNavbar: true,
                     component: SignUp,
                     layout: "/auth",
-                },
+                }
             ],
         },
     ];

@@ -1,16 +1,16 @@
 import axios from './index.js';
 
-/* The fetchPatients function sends a GET request to the backend API
-to find the data of the patients in the database. */
-
+/* The fetchPatientById function sends a GET request to the backend API
+to retrieve the data of a specific patient from the database. */
 const fetchPatientById = async (patientId) => {
-    try {
-      const response = await axios.get(`patientGetById/${patientId}`);
-      return response.data;
-    } catch (error) {
-      console.error(`Erreur lors de la récupération du patient : ${error}`);
-      throw error;
-    }
-  };
-  
-  export default fetchPatientById;
+  try {
+    const response = await axios.get(`patientGetId/${patientId}`);
+    return response.data;
+
+  } catch (error) {
+    console.error(`Fetch operation failed: ${error}`);
+    return null;
+  }
+};
+
+export default fetchPatientById;
