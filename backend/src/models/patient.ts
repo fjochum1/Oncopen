@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import Consultation from './consultation';
 
 @Entity()
 export default class Patient {
@@ -16,4 +17,9 @@ export default class Patient {
 
   @Column({ type: 'text' })
   sex!: string;
+
+  // One-to-many relationship with Consultation
+  @OneToMany(() => Consultation, consultation => consultation.patient)
+  consultations!: Consultation[];
 }
+

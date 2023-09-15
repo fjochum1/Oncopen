@@ -34,13 +34,15 @@ function Profile() {
 
 	const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
-	// Fetch user data when the component is mounted using the fetchCurrentUser function
+	const [hasDataChanged, setHasDataChanged] = useState(false);
+
+	const fetchUserData = async () => {
+		const data = await fetchCurrentUser();
+		setUserData(data);
+	};
+
 	useEffect(() => {
-		async function fetchData() {
-			const data = await fetchCurrentUser();
-			setUserData(data);
-		}
-		fetchData();
+		fetchUserData();
 	}, []);
 
 	const openSettingsModal = () => {
@@ -49,6 +51,10 @@ function Profile() {
 
 	const closeSettingsModal = () => {
 		setIsSettingsOpen(false);
+		if (hasDataChanged) {
+			fetchUserData();
+			setHasDataChanged(false);
+		}
 	};
 
 	return (
@@ -96,7 +102,7 @@ function Profile() {
 						<ModalContent maxW="1100px">
 							<ModalCloseButton />
 							<ModalBody>
-								<Settings closeSettingsModal={closeSettingsModal} />
+							<Settings closeSettingsModal={closeSettingsModal} onDataChanged={setHasDataChanged} />
 							</ModalBody>
 							<ModalFooter>
 								<Button variant="ghost" onClick={closeSettingsModal}>Close</Button>

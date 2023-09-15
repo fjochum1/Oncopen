@@ -6,6 +6,7 @@ import ActiveSession from '../models/activeSession';
 import User from '../models/user';
 import Role from '../models/role';
 import Patient from '../models/patient';
+import Consultation from '../models/consultation';
 
 if (!process.env.SQLITE_PATH) {
   throw new Error('SQLITE_PATH environment variable is not set.');
@@ -14,7 +15,7 @@ if (!process.env.SQLITE_PATH) {
 const options: ConnectionOptions = {
   type: 'sqlite',
   database: process.env.SQLITE_PATH,
-  entities: [User, ActiveSession, Role, Patient],
+  entities: [User, ActiveSession, Role, Patient, Consultation],
   logging: true
 };
 

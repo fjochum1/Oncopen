@@ -7,7 +7,7 @@ import SignUp from "views/Auth/SignUp.js";
 import LogOut from "views/Auth/LogOut.js";
 import PatientRecord from 'views/Dashboard/Patients/PatientRecord/index';
 import PatientProfile from 'views/Dashboard/Patients/PatientProfile/index';
-import CarePathway from 'views/Dashboard/Patients/carePathway';
+import CarePathway from 'views/Dashboard/Patients/CarePathway/index';
 
 import {
 	PersonIcon,

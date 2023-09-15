@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import SearchTable1 from './Components/dataTables';
 import fetchPatients from '../../../../api/fetchPatient';
 import { Flex, Button, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody } from '@chakra-ui/react';
-import NewPatientForm from 'views/Dashboard/Patients/newPatientForm';
-import { useHistory } from 'react-router-dom';  // <-- Import this
+import NewPatientForm from 'views/Dashboard/Patients/PatientRecord/newPatientForm';
+import { useHistory } from 'react-router-dom';
 
 const PatientRecord = () => {
   const [patientsData, setPatientsData] = useState([]);
@@ -11,22 +11,24 @@ const PatientRecord = () => {
 
   const onClose = () => setIsOpen(false);
   const onOpen = () => setIsOpen(true);
-  const history = useHistory();  // <-- Use this to navigate
+  const history = useHistory();
+
+  const fetchData = async () => {
+	const patients = await fetchPatients();
+	const formattedPatientsData = patients.map(patient => ({
+	  ...patient,
+	  dateOfBirth: new Date(parseFloat(patient.dateOfBirth)).toLocaleDateString()
+	}));
+	setPatientsData(formattedPatientsData);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const patients = await fetchPatients();
-
-      const formattedPatientsData = patients.map(patient => ({
-        ...patient,
-        dateOfBirth: new Date(parseFloat(patient.dateOfBirth)).toLocaleDateString()
-      }));
-
-      setPatientsData(formattedPatientsData);
-    }
-
-    fetchData();
+	fetchData();
   }, []);
+
+  const handlePatientAdded = () => {
+	fetchData();
+  };
 
   const columnsData = [
     { Header: 'First name', accessor: 'firstName' },
@@ -60,7 +62,7 @@ const PatientRecord = () => {
           <ModalContent>
             <ModalCloseButton />
             <ModalBody>
-              <NewPatientForm />
+			<NewPatientForm onClose={onClose} onPatientAdded={handlePatientAdded} />
             </ModalBody>
           </ModalContent>
         </Modal>

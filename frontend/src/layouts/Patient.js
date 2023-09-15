@@ -1,5 +1,5 @@
 // Chakra imports
-import { ChakraProvider, Portal, useDisclosure, Button, Flex } from '@chakra-ui/react';
+import { ChakraProvider, Portal, useDisclosure, Button, Flex, Heading } from '@chakra-ui/react';
 import Configurator from 'components/Configurator/Configurator';
 import Footer from 'components/Footer/Footer.js';
 // Layout components
@@ -11,6 +11,8 @@ import { useRoutesPatient } from '../routesPatient.js';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import '@fontsource/lato';
+import '@fontsource/raleway';
 // Custom Chakra theme
 import theme from 'theme/theme.js';
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin';

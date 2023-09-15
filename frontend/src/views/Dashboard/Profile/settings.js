@@ -11,6 +11,7 @@ import {
 	Grid
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
+import '@fontsource/bebas-neue';
 
 import AuthApi from "../../../api/auth";
 import { useHistory } from "react-router-dom";
@@ -18,7 +19,7 @@ import { useHistory } from "react-router-dom";
 // Importing the fetchUser function
 import fetchCurrentUser from "../../../api/fetchCurrentUser.js";
 
-function Settings({closeSettingsModal}) {
+function Settings({closeSettingsModal, onDataChanged}) {
 
 	const history = useHistory();
 	const [error, setError] = useState(null);
@@ -54,6 +55,7 @@ function Settings({closeSettingsModal}) {
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setFormState(prevState => ({ ...prevState, [name]: value }));
+		onDataChanged(true);
 	};
 
 	async function handleSaveChanges() {
@@ -75,7 +77,7 @@ function Settings({closeSettingsModal}) {
 		<Flex direction="column" p={5}>
 			{userData && (
 				<>
-					<Text fontSize="xl" mb={5}>
+					<Text fontSize="xl" mb={5} fontFamily="Bebas Neue, sans-serif" color="#94aca4">
 						Profile Settings
 					</Text>
 					<Grid templateColumns={{ sm: "1fr", xl: "repeat(2, 1fr)" }} gap={10}>

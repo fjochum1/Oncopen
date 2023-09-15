@@ -16,6 +16,7 @@ import {
 import AuthApi from "../../api/auth";
 import { useAuth } from "../../auth-context/auth.context";
 import { useHistory } from "react-router-dom";
+import '@fontsource/bebas-neue';
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -103,11 +104,11 @@ function SignIn() {
             p='48px'
 			boxShadow='0 20px 27px 0 rgb(0 0 0 / 5%)'
             mt={{ md: "150px", lg: "80px" }}>
-            <Heading color='#9cb1a4' fontSize='32px' mb='10px' marginBottom='50px'>
+            <Text color='#9cb1a4' fontSize='36px' mb='10px' marginBottom='50px' fontFamily="Bebas neue, sans-serif">
               Welcome Back!
-            </Heading>
+            </Text>
             <FormControl>
-              <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+              <FormLabel ms='4px' fontSize='sm' fontWeight='bold'>
                 Email
               </FormLabel>
               <Input
@@ -121,7 +122,7 @@ function SignIn() {
                 name="email"
                 value={formData?.email}
               />
-              <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+              <FormLabel ms='4px' fontSize='sm' fontWeight='bold'>
                 Password
               </FormLabel>
               <Input

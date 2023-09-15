@@ -15,6 +15,7 @@ import {
   import AuthApi from "../../api/auth";
   import { useAuth } from "../../auth-context/auth.context";
   import { useHistory } from "react-router-dom";
+  import '@fontsource/bebas-neue';
 
   function SignUp() {
 	const [formData, setFormData] = useState({});
@@ -78,9 +79,8 @@ import {
 		  textAlign='center'
 		  justifyContent='center'
 		  align='center'
-		  mt='6.5rem'
-		  mb='30px'>
-		  <Text fontSize='4xl' color='black' fontWeight='bold'>
+		  mt='6.5rem'>
+		  <Text fontSize='50px' color='#9cb1a4' fontFamily="Bebas Neue, sans-serif">
 			Welcome!
 		  </Text>
 		</Flex>
@@ -106,14 +106,14 @@ import {
 			boxShadow='0 20px 27px 0 rgb(0 0 0 / 5%)'>
 			<Text
 			  fontSize='xl'
-			  color={textColor}
+			  color='gray.700'
 			  fontWeight='bold'
 			  textAlign='center'
 			  mb='22px'>
 			  Register
 			</Text>
 			<FormControl>
-			<FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+			<FormLabel ms='4px' fontSize='sm' fontWeight='bold'>
 				Firstname
 			  </FormLabel>
 			  <Input
@@ -127,7 +127,7 @@ import {
 				name="firstname"
 				onChange={handleChange}
 			  />
-			  <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+			  <FormLabel ms='4px' fontSize='sm' fontWeight='bold'>
 				Name
 			  </FormLabel>
 			  <Input
@@ -141,7 +141,7 @@ import {
 				name="name"
 				onChange={handleChange}
 			  />
-			  <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+			  <FormLabel ms='4px' fontSize='sm' fontWeight='bold'>
 				Username
 			  </FormLabel>
 			  <Input
@@ -155,7 +155,7 @@ import {
 				name="username"
 				onChange={handleChange}
 			  />
-			  <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+			  <FormLabel ms='4px' fontSize='sm' fontWeight='bold'>
 				Email
 			  </FormLabel>
 			  <Input
@@ -169,7 +169,7 @@ import {
 				name="email"
 				onChange={handleChange}
 			  />
-			  <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+			  <FormLabel ms='4px' fontSize='sm' fontWeight='bold'>
 				Password
 			  </FormLabel>
 			  <Input
@@ -203,7 +203,7 @@ import {
 				//onClick={handleSubmit}
 				type='submit'
 				bg='#759284'
-				fontSize='10px'
+				fontSize='14px'
 				color='white'
 				fontWeight='bold'
 				w='100%'
@@ -228,9 +228,8 @@ import {
 				Already have an account?
 				<Link
 				  color="#94aca4"
-				  as='span'
 				  ms='5px'
-				  href='#/auth/signin'
+				  href="#/auth/signin"
 				  fontWeight='bold'>
 				  Sign In
 				</Link>
