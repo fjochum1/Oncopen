@@ -22,6 +22,15 @@ router.get('/:patientId', async (req, res) => {
 		return res.status(404).json({ success: false, msg: 'Patient not found.' });
 	  }
 
+	//   let ageDate = new Date(Date.now() - Date.parse(patient.dateOfBirth))
+
+	//   let patientDate = {
+	// 	...patient,
+		
+	// 		age : Math.abs(ageDate.getFullYear() - 1970)
+		
+	//   }
+
 	  return res.json(patient);
 
 	} catch (err) {

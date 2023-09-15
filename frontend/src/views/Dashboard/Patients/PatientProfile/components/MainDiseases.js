@@ -3,8 +3,10 @@ import {
   Button,
   Flex,
   Text,
+  Icon,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { FaPencilAlt } from "react-icons/fa";
 
 // Custom components
 import Card from "components/Card/Card";
@@ -23,11 +25,24 @@ import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,
 
   return (
     <Card p='16px'>
-      <CardHeader p='12px 5px' mb='12px'>
+      <CardHeader p='12px 5px' mb='12px' display='flex' justifyContent='space-between' alignItems='center'>
         <Text fontSize='lg' color={textColor} fontWeight='bold'>
           {title}
         </Text>
-      </CardHeader>
+
+        <Button
+        p='0px'
+        bg='transparent'
+        w='16px'
+        h='16px'
+        variant='no-hover'
+        ml='auto' // Aligne le bouton à droite
+      >
+      <Icon as={FaPencilAlt} />
+      </Button>
+
+</CardHeader>
+
       <CardBody px='5px'>
         <Flex direction='column' w='100%'>
           <Flex justifyContent='space-between' mb='21px'>

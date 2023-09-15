@@ -1,6 +1,9 @@
 /* The index.js file initializes and starts the application. It attaches it to the
 DOM and sets up the main routes for the application */
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 // Import required libraries
 import React from "react";
