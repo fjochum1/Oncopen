@@ -19,6 +19,7 @@ const Header = ({
 }) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
+  //const backgroundHeader = useColorModeValue ('red.500', 'red.200')
   const borderProfileColor = useColorModeValue(
     "white",
     "rgba(255, 255, 255, 0.31)"
@@ -34,7 +35,8 @@ const Header = ({
       justifyContent='center'
       align='center'>
       <Box
-        bgImage={backgroundHeader}
+        //bgImage={backgroundHeader}
+        bg={backgroundHeader}
         w='100%'
         h='300px'
         borderRadius='25px'

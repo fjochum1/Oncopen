@@ -1,11 +1,12 @@
 // Chakra imports
-import { Flex, Icon, Link, Text, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Icon, Link, Text, useColorModeValue , Button} from "@chakra-ui/react";
 // Custom components
 import Card from "components/Card/Card";
 import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
 import React from "react";
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
+
 
 const ProfileInformation = ({
   title,
@@ -13,18 +14,33 @@ const ProfileInformation = ({
   firstname,
   lastname,
   sex,
-  dateOfBirth
-
+  dateOfBirth,
+  age
 }) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
 
+
+  
   return (
     <Card p='16px' my={{ sm: "24px", xl: "0px" }}>
       <CardHeader p='12px 5px' mb='12px'>
         <Text fontSize='lg' color={textColor} fontWeight='bold'>
           {title}
         </Text>
+        <Button
+        p='0px'
+        bg='transparent'
+        w='16px'
+        h='16px'
+        variant='no-hover'
+        ml='auto' // Aligne le bouton à droite
+     
+        
+      >
+      <Icon as={FaPencilAlt} />
+     
+      </Button>
       </CardHeader>
       <CardBody px='5px'>
         <Flex direction='column'>
@@ -55,6 +71,16 @@ const ProfileInformation = ({
               {dateOfBirth}
             </Text>
           </Flex>
+          <Flex align='center' mb='18px'>
+            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+               Age:{" "}
+            </Text>
+            <Text fontSize='md' color='gray.500' fontWeight='400'>
+              {age} years 
+            </Text>
+          </Flex>
+
+
           <Flex align='center' mb='18px'>
             <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
               Sex:{" "}

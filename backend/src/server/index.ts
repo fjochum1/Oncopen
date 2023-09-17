@@ -12,6 +12,7 @@ import patientRoute from '../routes/patient';
 import patientGetRoute from '../routes/patientGet';
 import userGetRoute from '../routes/userGet';
 import patientGetIdRoute from '../routes/patientGetId';
+import medicalHistory from '../routes/medicalHistory';
 
 import { connect } from './database';
 
@@ -52,5 +53,6 @@ server.use('/api/patient', patientRoute);
 server.use('/api/patientGet', patientGetRoute);
 server.use('/api/userGet', userGetRoute);
 server.use('/api/patientGetId', patientGetIdRoute);
+server.use('/api/medicalHistory', medicalHistory)
 
 export default server;

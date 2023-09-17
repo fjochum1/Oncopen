@@ -24,6 +24,8 @@ export function useRoutes() {
             component: PatientRecord,
             layout: "/admin",
         },
+
+
         {
             name: "ACCOUNT PAGES",
             category: "account",
