@@ -143,103 +143,103 @@ function Wizard() {
 	//	fetchUserData();
 	//}, []);
 
-		//const [patientData, setPatientData] = useState(null);
+	//const [patientData, setPatientData] = useState(null);
 
-		//// Fetch user data when the component is mounted using the fetchCurrentUser function
-		//const [formState, setFormState] = useState({});
+	//// Fetch user data when the component is mounted using the fetchCurrentUser function
+	//const [formState, setFormState] = useState({});
 
-		//useEffect(() => {
-		//	async function fetchData() {
-		//		const data = await fetchPatientById();
-		//		setPatientData(data);
+	//useEffect(() => {
+	//	async function fetchData() {
+	//		const data = await fetchPatientById();
+	//		setPatientData(data);
 
-		//		setFormState({
-		//			consultationId: data.consultationId || "",
-		//			patientId: data.patientId || "",
-		//			dateOfConsultation: data.dateOfConsultation || new Date(),
-		//			consultationType: data.consultationType || "",
-		//			anatomicArea: data.anatomicArea || "",
-		//			main_reason: data.main_reason || "",
-		//			cancerDetection: data.cancerDetection || "",
-		//			historyOnco: data.historyOnco || "",
-		//			symptoms: data.symptoms || "",
-		//			symptomsTxt: data.symptomsTxt || "",
-		//			height: data.height || null,
-		//			weight: data.weight || null,
-		//			bmi: data.bmi || null,
-		//			performansStatus: data.performansStatus || "",
-		//			generalExamination: data.generalExamination || "",
-		//			tumorSide3cl: data.tumorSide3cl || "",
-		//			clinicalTumorSizeMm: data.clinicalTumorSizeMm || null,
-		//			clinicalTumorStageT: data.clinicalTumorStageT || "",
-		//			lymphNodeInvasion: data.lymphNodeInvasion || "",
-		//			clinicalTumorStageN: data.clinicalTumorStageN || "",
-		//			inflammatorySigns: data.inflammatorySigns || "",
-		//			mammography: data.mammography || "",
-		//			dateMammography: data.dateMammography || null,
-		//			acrClassification: data.acrClassification || "",
-		//			mammographyDetails: data.mammographyDetails || "",
-		//			breastEchography: data.breastEchography || "",
-		//			dateBreastEchography: data.dateBreastEchography || null,
-		//			breastEchographyDetails: data.breastEchographyDetails || "",
-		//			breastMri: data.breastMri || "",
-		//			dateBreastMri: data.dateBreastMri || null,
-		//			breastMriDetails: data.breastMriDetails || "",
-		//			otherRadiologicalExam: data.otherRadiologicalExam || "",
-		//			dateOtherRadiologicalExam: data.dateOtherRadiologicalExam || null,
-		//			whichRadiologicalExam: data.whichRadiologicalExam || "",
-		//			otherRadiologicalExamSDetails: data.otherRadiologicalExamSDetails || "",
-		//			breastBiopsy: data.breastBiopsy || "",
-		//			dateBreastBiopsy: data.dateBreastBiopsy || null,
-		//			breastBiopsyDetails: data.breastBiopsyDetails || "",
-		//			erIntensity: data.erIntensity || "",
-		//			erPercentage: data.erPercentage || null,
-		//			erStatus: data.erStatus || "",
-		//			prIntensity: data.prIntensity || "",
-		//			prPercentage: data.prPercentage || null,
-		//			prStatus: data.prStatus || "",
-		//			herIntensity: data.herIntensity || "",
-		//			herFish: data.herFish || "",
-		//			herStatus: data.herStatus || "",
-		//			grade: data.grade || null,
-		//			nuclearGrade: data.nuclearGrade || null,
-		//			ki67: data.ki67 || "",
-		//			histologicalType: data.histologicalType || "",
-		//			pdl1CPS: data.pdl1CPS || "",
-		//			pdl1Value: data.pdl1Value || "",
-		//			nodalCytology: data.nodalCytology || "",
-		//			otherBiopsy: data.otherBiopsy || "",
-		//			dateOtherBiopsy: data.dateOtherBiopsy || null,
-		//			localisationOtherBiopsy: data.localisationOtherBiopsy || "",
-		//			otherBiopsyDetails: data.otherBiopsyDetails || "",
-		//			ca153: data.ca153 || "",
-		//			ace: data.ace || ""
-		//		});
+	//		setFormState({
+	//			consultationId: data.consultationId || "",
+	//			patientId: data.patientId || "",
+	//			dateOfConsultation: data.dateOfConsultation || new Date(),
+	//			consultationType: data.consultationType || "",
+	//			anatomicArea: data.anatomicArea || "",
+	//			main_reason: data.main_reason || "",
+	//			cancerDetection: data.cancerDetection || "",
+	//			historyOnco: data.historyOnco || "",
+	//			symptoms: data.symptoms || "",
+	//			symptomsTxt: data.symptomsTxt || "",
+	//			height: data.height || null,
+	//			weight: data.weight || null,
+	//			bmi: data.bmi || null,
+	//			performansStatus: data.performansStatus || "",
+	//			generalExamination: data.generalExamination || "",
+	//			tumorSide3cl: data.tumorSide3cl || "",
+	//			clinicalTumorSizeMm: data.clinicalTumorSizeMm || null,
+	//			clinicalTumorStageT: data.clinicalTumorStageT || "",
+	//			lymphNodeInvasion: data.lymphNodeInvasion || "",
+	//			clinicalTumorStageN: data.clinicalTumorStageN || "",
+	//			inflammatorySigns: data.inflammatorySigns || "",
+	//			mammography: data.mammography || "",
+	//			dateMammography: data.dateMammography || null,
+	//			acrClassification: data.acrClassification || "",
+	//			mammographyDetails: data.mammographyDetails || "",
+	//			breastEchography: data.breastEchography || "",
+	//			dateBreastEchography: data.dateBreastEchography || null,
+	//			breastEchographyDetails: data.breastEchographyDetails || "",
+	//			breastMri: data.breastMri || "",
+	//			dateBreastMri: data.dateBreastMri || null,
+	//			breastMriDetails: data.breastMriDetails || "",
+	//			otherRadiologicalExam: data.otherRadiologicalExam || "",
+	//			dateOtherRadiologicalExam: data.dateOtherRadiologicalExam || null,
+	//			whichRadiologicalExam: data.whichRadiologicalExam || "",
+	//			otherRadiologicalExamSDetails: data.otherRadiologicalExamSDetails || "",
+	//			breastBiopsy: data.breastBiopsy || "",
+	//			dateBreastBiopsy: data.dateBreastBiopsy || null,
+	//			breastBiopsyDetails: data.breastBiopsyDetails || "",
+	//			erIntensity: data.erIntensity || "",
+	//			erPercentage: data.erPercentage || null,
+	//			erStatus: data.erStatus || "",
+	//			prIntensity: data.prIntensity || "",
+	//			prPercentage: data.prPercentage || null,
+	//			prStatus: data.prStatus || "",
+	//			herIntensity: data.herIntensity || "",
+	//			herFish: data.herFish || "",
+	//			herStatus: data.herStatus || "",
+	//			grade: data.grade || null,
+	//			nuclearGrade: data.nuclearGrade || null,
+	//			ki67: data.ki67 || "",
+	//			histologicalType: data.histologicalType || "",
+	//			pdl1CPS: data.pdl1CPS || "",
+	//			pdl1Value: data.pdl1Value || "",
+	//			nodalCytology: data.nodalCytology || "",
+	//			otherBiopsy: data.otherBiopsy || "",
+	//			dateOtherBiopsy: data.dateOtherBiopsy || null,
+	//			localisationOtherBiopsy: data.localisationOtherBiopsy || "",
+	//			otherBiopsyDetails: data.otherBiopsyDetails || "",
+	//			ca153: data.ca153 || "",
+	//			ace: data.ace || ""
+	//		});
 
-		//	}
-		//	fetchData();
-		//}, []);
+	//	}
+	//	fetchData();
+	//}, []);
 
-		//const handleInputChange = (event) => {
-		//	const { name, value } = event.target;
-		//	setFormState(prevState => ({ ...prevState, [name]: value }));
-		//	onDataChanged(true);
-		//};
+	//const handleInputChange = (event) => {
+	//	const { name, value } = event.target;
+	//	setFormState(prevState => ({ ...prevState, [name]: value }));
+	//	onDataChanged(true);
+	//};
 
-		//async function handleSaveChanges() {
-		//	AuthApi.Edit(formState).then(response => {
-		//		if (response.data.success) {
-		//			closeSettingsModal();
-		//		} else {
-		//			setError(response.data.msg)
-		//		}
-		//	}).catch(error => {
-		//		if (error.response) {
-		//			return setError(error.response.data.msg);
-		//		}
-		//		return setError("There has been an error.");
-		//	})
-		//}
+	//async function handleSaveChanges() {
+	//	AuthApi.Edit(formState).then(response => {
+	//		if (response.data.success) {
+	//			closeSettingsModal();
+	//		} else {
+	//			setError(response.data.msg)
+	//		}
+	//	}).catch(error => {
+	//		if (error.response) {
+	//			return setError(error.response.data.msg);
+	//		}
+	//		return setError("There has been an error.");
+	//	})
+	//}
 
 
 	useEffect(() => {
@@ -710,12 +710,12 @@ function Wizard() {
 													<RadioGroup defaultValue="no" onChange={(value) => setSymptom(value)}>
 														<Stack direction="row">
 															<Radio value="no">No</Radio>
-															<Radio value="yes">Yes</Radio>
+															<Radio value="Yes">Yes</Radio>
 														</Stack>
 													</RadioGroup>
 												</Stack>
 											</FormControl>
-											{symptom === "yes" && (
+											{symptom === "Yes" && (
 												<FormControl>
 													<FormLabel mt="30px" color={textColor} fontSize="14" fontWeight="bold">
 														Which symptoms?
@@ -888,7 +888,7 @@ function Wizard() {
 													</RadioGroup>
 												</Stack>
 											</FormControl>
-											{/*{symptom === "yes" && (
+											{/*{symptom === "Yes" && (
 												<FormControl>
 
 												</FormControl>*/}
@@ -1052,7 +1052,7 @@ function Wizard() {
 														</Stack>
 													</RadioGroup>
 												</FormControl>
-												{mammography === "yes" && (
+												{mammography === "Yes" && (
 													<>
 														<FormControl>
 															<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
@@ -1122,7 +1122,7 @@ function Wizard() {
 														</Stack>
 													</RadioGroup>
 												</FormControl>
-												{echography === "yes" && (
+												{echography === "Yes" && (
 													<>
 														<FormControl>
 															<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
@@ -1169,7 +1169,7 @@ function Wizard() {
 														</Stack>
 													</RadioGroup>
 												</FormControl>
-												{MRI === "yes" && (
+												{MRI === "Yes" && (
 													<>
 														<FormControl>
 															<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
@@ -1216,7 +1216,7 @@ function Wizard() {
 														</Stack>
 													</RadioGroup>
 												</FormControl>
-												{otherRadio === "yes" && (
+												{otherRadio === "Yes" && (
 													<>
 														<FormControl>
 															<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
@@ -1282,7 +1282,7 @@ function Wizard() {
 														</Stack>
 													</RadioGroup>
 												</FormControl>
-												{biopsy === "yes" && (
+												{biopsy === "Yes" && (
 													<>
 														<FormControl>
 															<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
@@ -1317,281 +1317,283 @@ function Wizard() {
 													</>
 												)}
 											</Grid>
-											{(biopsy === 'yes') && (
-												<Stack direction="column" spacing="20px">
-													<Grid
-														templateColumns="1fr 1fr 2fr"
-														gap={2}
-													>
-														<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
+											{(biopsy === 'Yes') && (
+												<>
+													<Stack direction="column" spacing="20px">
+														<Grid
+															templateColumns="1fr 1fr 2fr"
+															gap={2}
+														>
+															<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	ER intensity
+																</FormLabel>
+																<RadioGroup onChange={(value) => setERintensity(value)} onBlur={calculateERstatus}>
+																	<Stack direction="row" spacing="15px">
+																		<Radio value="+">+</Radio>
+																		<Radio value="++">++</Radio>
+																		<Radio value="+++">+++</Radio>
+																	</Stack>
+																</RadioGroup>
+															</FormControl>
+															<FormControl>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	ER percentage
+																</FormLabel>
+																<Input
+																	borderRadius="15px"
+																	placeholder="e.g. 15"
+																	fontSize="12"
+																	value={ERpercentage}
+																	onChange={(e) => setERpercentage(e.target.value)}
+																	onBlur={calculateERstatus}
+																	_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
+																/>
+															</FormControl>
+															<FormControl>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	ER status
+																</FormLabel>
+																<Input
+																	borderRadius="15px"
+																	placeholder="calculated automatically"
+																	fontSize="12"
+																	value={ERstatus}
+																	readOnly
+																	_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
+																/>
+															</FormControl>
+														</Grid>
+														<Grid
+															templateColumns="1fr 1fr 2fr"
+															gap={2}
+														>
+															<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	PR intensity
+																</FormLabel>
+																<RadioGroup onChange={(value) => setPRintensity(value)} onBlur={calculatePRstatus}>
+																	<Stack direction="row" spacing="15px">
+																		<Radio value="+">+</Radio>
+																		<Radio value="++">++</Radio>
+																		<Radio value="+++">+++</Radio>
+																	</Stack>
+																</RadioGroup>
+															</FormControl>
+															<FormControl>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	PR percentage
+																</FormLabel>
+																<Input
+																	borderRadius="15px"
+																	placeholder="e.g. 70"
+																	fontSize="12"
+																	value={PRpercentage}
+																	onChange={(e) => setPRpercentage(e.target.value)}
+																	onBlur={calculatePRstatus}
+																	_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
+																/>
+															</FormControl>
+															<FormControl>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	PR status
+																</FormLabel>
+																<Input
+																	borderRadius="15px"
+																	placeholder="calculated automatically"
+																	fontSize="12"
+																	value={PRstatus}
+																	readOnly
+																	_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
+																/>
+															</FormControl>
+														</Grid>
+														<Grid
+															templateColumns="1fr 1fr 2fr"
+															gap={2}
+														>
+															<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	HER intensity
+																</FormLabel>
+																<RadioGroup onChange={(value) => setHERintensity(value)} onBlur={calculateHERstatus}>
+																	<Stack direction="row" spacing="15px">
+																		<Radio value="+">+</Radio>
+																		<Radio value="++">++</Radio>
+																		<Radio value="+++">+++</Radio>
+																	</Stack>
+																</RadioGroup>
+															</FormControl>
+															<FormControl>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	HER fish
+																</FormLabel>
+																<RadioGroup onChange={(value) => setHERfish(value)} onBlur={calculateHERstatus}>
+																	<Stack direction="row" spacing="15px">
+																		<Radio value="Negative">Negative</Radio>
+																		<Radio value="Positive">Positive</Radio>
+																	</Stack>
+																</RadioGroup>
+															</FormControl>
+															<FormControl>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	HER status
+																</FormLabel>
+																<Input
+																	borderRadius="15px"
+																	placeholder="calculated automatically"
+																	fontSize="12"
+																	value={HERstatus}
+																	readOnly
+																	_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
+																/>
+															</FormControl>
+														</Grid>
+														<Grid
+															templateColumns="1fr 1fr 2fr"
+															gap={2}
+														>
+															<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	Grade
+																</FormLabel>
+																<RadioGroup>
+																	<Stack direction="row" spacing="15px">
+																		<Radio value="1">1</Radio>
+																		<Radio value="2">2</Radio>
+																		<Radio value="3">3</Radio>
+																	</Stack>
+																</RadioGroup>
+															</FormControl>
+															<FormControl>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	Nuclear grade
+																</FormLabel>
+																<RadioGroup>
+																	<Stack direction="row" spacing="15px">
+																		<Radio value="1">1</Radio>
+																		<Radio value="2">2</Radio>
+																		<Radio value="3">3</Radio>
+																	</Stack>
+																</RadioGroup>
+															</FormControl>
+															<FormControl>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	Ki67
+																</FormLabel>
+																<Input
+																	borderRadius="15px"
+																	placeholder="e.g. 70"
+																	fontSize="12"
+																	_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
+																/>
+															</FormControl>
+														</Grid>
+														<FormControl>
 															<FormLabel
 																color={textColor}
 																fontWeight="bold"
 																fontSize="13"
 															>
-																ER intensity
+																Histological type
 															</FormLabel>
-															<RadioGroup onChange={(value) => setERintensity(value)} onBlur={calculateERstatus}>
+															<RadioGroup>
 																<Stack direction="row" spacing="15px">
-																	<Radio value="+">+</Radio>
-																	<Radio value="++">++</Radio>
-																	<Radio value="+++">+++</Radio>
+																	<Radio value="1">NST</Radio>
+																	<Radio value="2">Lobular</Radio>
+																	<Radio value="3">Mucinous</Radio>
+																	<Radio value="4">Tubulous</Radio>
+																	<Radio value="9">Others</Radio>
 																</Stack>
 															</RadioGroup>
 														</FormControl>
-														<FormControl>
-															<FormLabel
-																color={textColor}
-																fontWeight="bold"
-																fontSize="13"
-															>
-																ER percentage
-															</FormLabel>
-															<Input
-																borderRadius="15px"
-																placeholder="e.g. 15"
-																fontSize="12"
-																value={ERpercentage}
-																onChange={(e) => setERpercentage(e.target.value)}
-																onBlur={calculateERstatus}
-																_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
-															/>
-														</FormControl>
-														<FormControl>
-															<FormLabel
-																color={textColor}
-																fontWeight="bold"
-																fontSize="13"
-															>
-																ER status
-															</FormLabel>
-															<Input
-																borderRadius="15px"
-																placeholder="calculated automatically"
-																fontSize="12"
-																value={ERstatus}
-																readOnly
-																_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
-															/>
-														</FormControl>
-													</Grid>
-													<Grid
-														templateColumns="1fr 1fr 2fr"
-														gap={2}
-													>
-														<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
-															<FormLabel
-																color={textColor}
-																fontWeight="bold"
-																fontSize="13"
-															>
-																PR intensity
-															</FormLabel>
-															<RadioGroup onChange={(value) => setPRintensity(value)} onBlur={calculatePRstatus}>
-																<Stack direction="row" spacing="15px">
-																	<Radio value="+">+</Radio>
-																	<Radio value="++">++</Radio>
-																	<Radio value="+++">+++</Radio>
-																</Stack>
-															</RadioGroup>
-														</FormControl>
-														<FormControl>
-															<FormLabel
-																color={textColor}
-																fontWeight="bold"
-																fontSize="13"
-															>
-																PR percentage
-															</FormLabel>
-															<Input
-																borderRadius="15px"
-																placeholder="e.g. 70"
-																fontSize="12"
-																value={PRpercentage}
-																onChange={(e) => setPRpercentage(e.target.value)}
-																onBlur={calculatePRstatus}
-																_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
-															/>
-														</FormControl>
-														<FormControl>
-															<FormLabel
-																color={textColor}
-																fontWeight="bold"
-																fontSize="13"
-															>
-																PR status
-															</FormLabel>
-															<Input
-																borderRadius="15px"
-																placeholder="calculated automatically"
-																fontSize="12"
-																value={PRstatus}
-																readOnly
-																_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
-															/>
-														</FormControl>
-													</Grid>
-													<Grid
-														templateColumns="1fr 1fr 2fr"
-														gap={2}
-													>
-														<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
-															<FormLabel
-																color={textColor}
-																fontWeight="bold"
-																fontSize="13"
-															>
-																HER intensity
-															</FormLabel>
-															<RadioGroup onChange={(value) => setHERintensity(value)} onBlur={calculateHERstatus}>
-																<Stack direction="row" spacing="15px">
-																	<Radio value="+">+</Radio>
-																	<Radio value="++">++</Radio>
-																	<Radio value="+++">+++</Radio>
-																</Stack>
-															</RadioGroup>
-														</FormControl>
-														<FormControl>
-															<FormLabel
-																color={textColor}
-																fontWeight="bold"
-																fontSize="13"
-															>
-																HER fish
-															</FormLabel>
-															<RadioGroup onChange={(value) => setHERfish(value)} onBlur={calculateHERstatus}>
-																<Stack direction="row" spacing="15px">
-																	<Radio value="Negative">Negative</Radio>
-																	<Radio value="Positive">Positive</Radio>
-																</Stack>
-															</RadioGroup>
-														</FormControl>
-														<FormControl>
-															<FormLabel
-																color={textColor}
-																fontWeight="bold"
-																fontSize="13"
-															>
-																HER status
-															</FormLabel>
-															<Input
-																borderRadius="15px"
-																placeholder="calculated automatically"
-																fontSize="12"
-																value={HERstatus}
-																readOnly
-																_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
-															/>
-														</FormControl>
-													</Grid>
-												</Stack>
-											)}
-											<Grid
-												templateColumns="1fr 1fr 2fr"
-												gap={2}
-											>
-												<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
-													<FormLabel
-														color={textColor}
-														fontWeight="bold"
-														fontSize="13"
-													>
-														Grade
-													</FormLabel>
-													<RadioGroup>
-														<Stack direction="row" spacing="15px">
-															<Radio value="1">1</Radio>
-															<Radio value="2">2</Radio>
-															<Radio value="3">3</Radio>
-														</Stack>
-													</RadioGroup>
-												</FormControl>
-												<FormControl>
-													<FormLabel
-														color={textColor}
-														fontWeight="bold"
-														fontSize="13"
-													>
-														Nuclear grade
-													</FormLabel>
-													<RadioGroup>
-														<Stack direction="row" spacing="15px">
-															<Radio value="1">1</Radio>
-															<Radio value="2">2</Radio>
-															<Radio value="3">3</Radio>
-														</Stack>
-													</RadioGroup>
-												</FormControl>
-												<FormControl>
-													<FormLabel
-														color={textColor}
-														fontWeight="bold"
-														fontSize="13"
-													>
-														Ki67
-													</FormLabel>
-													<Input
-														borderRadius="15px"
-														placeholder="e.g. 70"
-														fontSize="12"
-														_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
-													/>
-												</FormControl>
-											</Grid>
-											<FormControl>
-												<FormLabel
-													color={textColor}
-													fontWeight="bold"
-													fontSize="13"
-												>
-													Histological type
-												</FormLabel>
-												<RadioGroup>
-													<Stack direction="row" spacing="15px">
-														<Radio value="1">NST</Radio>
-														<Radio value="2">Lobular</Radio>
-														<Radio value="3">Mucinous</Radio>
-														<Radio value="4">Tubulous</Radio>
-														<Radio value="9">Others</Radio>
+														<Grid
+															templateColumns="1fr 1fr"
+															gap={2}
+															w="90"
+														>
+															<FormControl>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	PDL1 (CPS)
+																</FormLabel>
+																<RadioGroup>
+																	<Stack direction="row" spacing="15px">
+																		<Radio value="No">No</Radio>
+																		<Radio value="Yes">Yes</Radio>
+																	</Stack>
+																</RadioGroup>
+															</FormControl>
+															<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
+																<FormLabel
+																	color={textColor}
+																	fontWeight="bold"
+																	fontSize="13"
+																>
+																	PDL1 value
+																</FormLabel>
+																<Input
+																	borderRadius="15px"
+																	placeholder="e.g. 45"
+																	fontSize="12"
+																	_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
+																/>
+															</FormControl>
+														</Grid>
 													</Stack>
-												</RadioGroup>
-											</FormControl>
-											<Grid
-												templateColumns="1fr 1fr"
-												gap={2}
-												w="90"
-											>
-												<FormControl>
-													<FormLabel
-														color={textColor}
-														fontWeight="bold"
-														fontSize="13"
-													>
-														PDL1 (CPS)
-													</FormLabel>
-													<RadioGroup>
-														<Stack direction="row" spacing="15px">
-															<Radio value="No">No</Radio>
-															<Radio value="Yes">Yes</Radio>
-														</Stack>
-													</RadioGroup>
-												</FormControl>
-												<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
-													<FormLabel
-														color={textColor}
-														fontWeight="bold"
-														fontSize="13"
-													>
-														PDL1 value
-													</FormLabel>
-													<Input
-														borderRadius="15px"
-														placeholder="e.g. 45"
-														fontSize="12"
-														_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
-													/>
-												</FormControl>
-											</Grid>
+												</>
+											)}
 											<FormControl>
 												<FormLabel color={textColor} fontSize="13" fontWeight="bold">
 													Nodal cytology
@@ -1616,96 +1618,96 @@ function Wizard() {
 														</Stack>
 													</RadioGroup>
 												</FormControl>
-												{biopsyOther === "yes" && (
-													<>
-														<FormControl>
-															<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
-																Date of biopsy
-															</FormLabel>
-															<Input
-																type="date"
-																borderRadius="15px"
-																fontSize="13"
-																_focus={{
-																	borderColor: "#94aca4",
-																	boxShadow: "0 0 0 1px #94aca4",
-																	borderWidth: "2px",
-																}}
-															/>
-														</FormControl>
-														<FormControl>
-															<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
-																Localisation
-															</FormLabel>
-															<Input
-																borderRadius="15px"
-																placeholder="e.g hepatic"
-																fontSize="13"
-																_focus={{
-																	borderColor: "#94aca4",
-																	boxShadow: "0 0 0 1px #94aca4",
-																	borderWidth: "2px",
-																}}
-															/>
-														</FormControl>
-														<FormControl>
-															<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
-																Details
-															</FormLabel>
-															<Input
-																borderRadius="15px"
-																placeholder="e.g hepatic metastasis"
-																fontSize="13"
-																_focus={{
-																	borderColor: "#94aca4",
-																	boxShadow: "0 0 0 1px #94aca4",
-																	borderWidth: "2px",
-																}}
-															/>
-														</FormControl>
-													</>
-												)}
 											</Grid>
-											<Divider />
-											<Text color="#94aca4" fontSize="lg" mb="4px" fontFamily="Bebas neue, sans-serif">
-												Biology
-											</Text>
-											<Grid
-												templateColumns="1fr 1fr"
-												gap={2}
-											>
-												<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
-													<FormLabel
-														color={textColor}
-														fontWeight="bold"
-														fontSize="13"
-													>
-														CA 15.3
-													</FormLabel>
-													<Input
-														borderRadius="15px"
-														placeholder="e.g. 30"
-														fontSize="12"
-														_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
-													/>
-												</FormControl>
-												<FormControl>
-													<FormLabel
-														color={textColor}
-														fontWeight="bold"
-														fontSize="13"
-													>
-														ACE
-													</FormLabel>
-													<Input
-														borderRadius="15px"
-														placeholder="e.g. 10"
-														fontSize="12"
-														_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
-													/>
-												</FormControl>
-											</Grid>
+											{biopsyOther === "Yes" && (
+												<>
+													<FormControl>
+														<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
+															Date of biopsy
+														</FormLabel>
+														<Input
+															type="date"
+															borderRadius="15px"
+															fontSize="13"
+															_focus={{
+																borderColor: "#94aca4",
+																boxShadow: "0 0 0 1px #94aca4",
+																borderWidth: "2px",
+															}}
+														/>
+													</FormControl>
+													<FormControl>
+														<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
+															Localisation
+														</FormLabel>
+														<Input
+															borderRadius="15px"
+															placeholder="e.g hepatic"
+															fontSize="13"
+															_focus={{
+																borderColor: "#94aca4",
+																boxShadow: "0 0 0 1px #94aca4",
+																borderWidth: "2px",
+															}}
+														/>
+													</FormControl>
+													<FormControl>
+														<FormLabel mt="0px" color={textColor} fontSize="13" fontWeight="bold">
+															Details
+														</FormLabel>
+														<Input
+															borderRadius="15px"
+															placeholder="e.g hepatic metastasis"
+															fontSize="13"
+															_focus={{
+																borderColor: "#94aca4",
+																boxShadow: "0 0 0 1px #94aca4",
+																borderWidth: "2px",
+															}}
+														/>
+													</FormControl>
+												</>
+											)}
 										</Stack>
+										<Divider mb="5" mt="5" />
+										<Text color="#94aca4" fontSize="lg" mb="4px" fontFamily="Bebas neue, sans-serif">
+											Biology
+										</Text>
+										<Grid
+											templateColumns="1fr 1fr"
+											gap={2}
+										>
+											<FormControl gridColumn={{ sm: "1 / 3", lg: "auto" }}>
+												<FormLabel
+													color={textColor}
+													fontWeight="bold"
+													fontSize="13"
+												>
+													CA 15.3
+												</FormLabel>
+												<Input
+													borderRadius="15px"
+													placeholder="e.g. 30"
+													fontSize="12"
+													_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
+												/>
+											</FormControl>
+											<FormControl>
+												<FormLabel
+													color={textColor}
+													fontWeight="bold"
+													fontSize="13"
+												>
+													ACE
+												</FormLabel>
+												<Input
+													borderRadius="15px"
+													placeholder="e.g. 10"
+													fontSize="12"
+													_focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
+												/>
+											</FormControl>
+										</Grid>
 										<Flex justify="space-between">
 											<Button
 												bg={bgPrevButton}
