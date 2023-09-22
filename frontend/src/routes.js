@@ -25,7 +25,6 @@ export function useRoutes() {
             layout: "/admin",
         },
 
-
         {
             name: "ACCOUNT PAGES",
             category: "account",

@@ -1,6 +1,8 @@
-import React, {useState} from 'react'; // Importez React
-import '../../../../../styles/SettingsMedicalHistory.css'
-import axios from 'axios';
+import React, {useState, useEffect} from 'react'; // Importez React
+import '../../../../../styles/SettingsMedicalHistory.css';
+import { fetchMedicalHistory, createMedicalHistory } from '../../../../../api/fetchMedicalHistory';
+
+
 import {
 	Flex,
 	Box,
@@ -40,9 +42,7 @@ function SettingsMedicalHistory({onClose}) {
     const [isComedicationSelected, setIsComedicationSelected] = useState(false);
     const [isComedicationPlusSelected, setIsComedicationPlusSelected] = useState(false);
     const [isGenderSelected, setIsGenderSelected] = useState(false);
-    const [isPersonalFamilialSelected, setIsPersonalFamilialSelected] = useState(false);
-    const [isBRCASelected, setIsBRCASelected] = useState(false);
-	
+    const [isPersonalFamilialSelected, setIsPersonalFamilialSelected] = useState(false);	
 
     const handleGenderChange = (event) => {const value = event.target.value; setIsGenderSelected(value === 'F') ; setFormData ({...formData, gender: value})};
 	const handleMenopauseChange = (event) => {const value = event.target.value; setFormData({ ...formData, menopause: value });}
@@ -105,9 +105,35 @@ function SettingsMedicalHistory({onClose}) {
 		comedicationPlus:'',
 		comedicationPlusDescription:'',
 	  });
-	  
+
 
 	  
+
+	  useEffect(() => {
+		
+		// Chargement des données médicales actuelles lors de l'ouverture de la page
+		fetchMedicalHistory() // Utilisez la méthode de récupération existante
+		  .then((data) => {
+			// Mettez à jour le formulaire avec les données médicales actuelles
+			setFormData(data);
+			// Assurez-vous de mettre à jour les états isAllergiesSelected, isSmokeSelected, etc. selon les données chargées.
+			setIsAllergiesSelected(data.allergies === 'Yes');
+			setIsSmokeSelected(data.smoke === 'Yes');
+			setIsMedicalSelected(data.medicalHistory === 'Yes')
+			setIsSurgicalSelected(data.surgicalHistory === 'Yes')
+			setIsFamilialSelected(data.familialHistory === 'Yes')
+			setIsFamilialBreastSelected(data.familialBreastCancerHistory === 'Yes')
+			setIsAlcoholSelected(data.alcohol === 'Yes')
+			setIsComedicationSelected(data.comedication === 'Yes')
+			setIsComedicationPlusSelected(data.comedicationPlus === 'Yes')
+			setIsGenderSelected(data.gender === 'F')
+			setIsPersonalFamilialSelected(data.personalFamilialHistoryCancer === 'Yes')
+			// Faites de même pour les autres états
+		  })
+		  .catch((error) => {
+			console.error('Erreur lors de la récupération des données médicales dans le formulaire :', error);
+		  });
+	  }, []);
 
 const handleSaveData = () => {
   // Créez un objet avec les données du formulaire que vous souhaitez envoyer
@@ -144,24 +170,35 @@ const handleSaveData = () => {
   
   };
 
-  // Effectuez une requête POST pour envoyer les données en utilisant Axios
-  axios.post('/medicalHistory', formDataToSend, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => {
-      // Gérez la réponse du backend ici (par exemple, affichez un message de succès)
-      console.log(response.data.message);
-    })
-    .catch((error) => {
-      // Gérez les erreurs ici
-      console.error('Erreur lors de la requête POST :', error);
-    });
+  createMedicalHistory(formDataToSend)
+      .then((response) => {
+        console.log(response.data.message);
+        onClose();
+      })
+      .catch((error) => {
+        console.error('Erreur lors de la création des données médicales :', error);
+      });
 
-  // Fermez la boîte de dialogue après avoir enregistré les données
-  onClose();
 };
+
+  // Effectuez une requête POST pour envoyer les données en utilisant Axios
+//   axios.post('/medicalHistory', formDataToSend, {
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   })
+//     .then((response) => {
+//       // Gérez la réponse du backend ici (par exemple, affichez un message de succès)
+//       console.log(response.data.message);
+//     })
+//     .catch((error) => {
+//       // Gérez les erreurs ici
+//       console.error('Erreur lors de la requête POST :', error);
+//     });
+
+//   // Fermez la boîte de dialogue après avoir enregistré les données
+//   onClose();
+// };
 
   return (
     <Modal isOpen={true} onClose={onClose} size="6xl">

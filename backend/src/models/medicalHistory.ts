@@ -93,8 +93,9 @@ export default class MedicalHistory {
   @Column({ type: 'text', nullable: true })
   comedicationPlusDescription!: string | null;
 
+  // Définissez la relation OneToOne avec Patient
   @OneToOne(() => Patient)
-  @JoinColumn({ name: 'patient_id' })
-  patient!: Patient;
+  @JoinColumn({ name: 'patient_id', referencedColumnName: 'id' }) // Assurez-vous que le nom correspond à la colonne dans votre base de données
+  patient_id!: string | null;
 }
   
