@@ -48,16 +48,16 @@ import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,
           <Flex justifyContent='space-between' mb='21px'>
             <Flex align='center'>
               <Flex direction='column'> 
-               <Text fontSize='sm' color={textColor} fontWeight='bold'>
+               {/* <Text fontSize='sm' color={textColor} fontWeight='bold'>
                     {titleDisease}
                 </Text>
                 <Text fontSize='xs' color='gray.500' fontWeight='400'>
                     {details.description}
-                </Text> 
+                </Text>  */}
                </Flex>
             </Flex>        
 <>
-      <Button p='0px' bg='transparent' variant='no-hover' onClick={onOpen}>
+      {/* <Button p='0px' bg='transparent' variant='no-hover' onClick={onOpen}>
               <Text
                 fontSize='sm'
                 fontWeight='600'
@@ -66,10 +66,10 @@ import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,
                 DETAILS
               </Text>
 
-      </Button>
+      </Button> */}
 
       
-      <Modal isOpen={isOpen} onClose={onClose}>
+      {/* <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Details</ModalHeader>
@@ -96,7 +96,7 @@ import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,
             
           </ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal> */}
     </>
      </Flex>
         </Flex> 

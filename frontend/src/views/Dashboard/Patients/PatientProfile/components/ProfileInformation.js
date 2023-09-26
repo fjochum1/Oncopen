@@ -6,7 +6,7 @@ import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
 import React from "react";
 import { FaPencilAlt } from "react-icons/fa";
-
+import { useState, useEffect } from "react";
 
 const ProfileInformation = ({
   title,
@@ -15,12 +15,28 @@ const ProfileInformation = ({
   lastname,
   sex,
   dateOfBirth,
-  age
+  
 }) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
+  const [age, setAge] = useState(null);
 
+  
 
+  useEffect(() => {
+    // Calculate the age based on date of birth and current date
+    if (dateOfBirth) {
+      const [day, month, year] = dateOfBirth.split('/');
+
+      const birthDate = new Date(year, month - 1, day);
+      const currentDate = new Date();
+      const ageDiff = currentDate - birthDate;
+      const ageDate = new Date(ageDiff);
+      const calculatedAge = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+      setAge(calculatedAge);
+    }
+  }, [dateOfBirth]);
   
   return (
     <Card p='16px' my={{ sm: "24px", xl: "0px" }}>
@@ -76,7 +92,7 @@ const ProfileInformation = ({
                Age:{" "}
             </Text>
             <Text fontSize='md' color='gray.500' fontWeight='400'>
-              {age} years 
+            {age !== null ? `${age} years` : "Age unknown"} 
             </Text>
           </Flex>
 

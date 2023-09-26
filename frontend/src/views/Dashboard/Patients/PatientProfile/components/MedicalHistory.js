@@ -21,7 +21,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 
 
-const MedicalHistory = ({ title, titleHistory, details }) => {
+const MedicalHistory = ({ title }) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -57,62 +57,7 @@ const openSettings = () => {
 
         
       </CardHeader>
-      <CardBody px='5px'>
-        <Flex direction='column' w='100%'>
-          <Flex justifyContent='space-between' mb='21px'>
-            <Flex align='center'>
-              <Flex direction='column'>
-                <Text fontSize='sm' color={textColor} fontWeight='bold'>
-                  {titleHistory}
-                </Text>
-                <Text fontSize='xs' color='gray.500' fontWeight='400'>
-                  {details.description}
-                </Text>
-              </Flex>     
-    </Flex>
-    <>
-      <Button p='0px' bg='transparent' variant='no-hover' onClick={onOpen}>
-      <Text
-                fontSize='sm'
-                fontWeight='600'
-                color='teal.300'
-                alignSelf='center'>
-                DETAILS
-              </Text>
-
-      </Button>
-      <Modal isOpen={isOpen} onClose={onClose} size="xl">
-       
-        <ModalContent maxW="1100px">
-          <ModalHeader>Details</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-          <Text fontSize='sm' color={textColor} fontWeight='bold'>
-                  {titleHistory}
-                </Text>
-                <Text fontSize='xs' color='gray.500' fontWeight='400'>
-                  {details.description}
-        
-
-                </Text>
-          </ModalBody>
-          <ModalFooter>
-            <Button p='0px' bg='transparent' variant='no-hover' onClick={onClose}>
-            <Text
-                fontSize='sm'
-                fontWeight='600'
-                color='teal.300'
-                alignSelf='center'>
-                Close
-              </Text>
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
-          </Flex>
-        </Flex>
-      </CardBody>
+      
       {isSettingsOpen && (
         <SettingsMedicalHistory onClose={() => setIsSettingsOpen(false)}/>
       )}

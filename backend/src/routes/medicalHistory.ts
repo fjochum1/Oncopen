@@ -5,7 +5,7 @@ import express from 'express';
 const router = express.Router();
 import {
   getMedicalHistoryController,
-  addMedicalHistoryController,
+  updateMedicalHistoryController
 } from '../controllers/medicalHistory.controller';
 
 // Middleware pour analyser le corps des requêtes en JSON
@@ -17,6 +17,10 @@ router.get('/medicalHistoryGet/:patient_id', getMedicalHistoryController);
 
 
 // Route POST pour créer un nouvel historique médical
-router.post('/medicalHistoryCreate', addMedicalHistoryController);
+// router.post('/medicalHistoryCreate', addMedicalHistoryController);
+
+// Endpoint pour mettre à jour les données médicales
+router.put('/medicalHistoryUpdate/:patient_id', updateMedicalHistoryController);
+
 
 export default router;

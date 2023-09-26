@@ -24,6 +24,8 @@ const PatientProfile = () => {
 	// const [formData, setFormData] = useState(null);
 	// const handleSaveFormData = (data) => {setFormData(data);};
 
+	
+
     useEffect(() => {
 
         async function fetchData() {
@@ -49,7 +51,7 @@ const PatientProfile = () => {
 			backgroundProfile={bgProfile}
 			name={`${patient.firstName || "Prénom inconnu"} ${patient.lastName || "Nom Inconnu"}`}
 		  />
-		  <Grid templateColumns={{ sm: "1fr", xl: "repeat(3, 1fr)" }} gap='22px'>
+		  <Box padding={30}>
 
 			<ProfileInformation
 			  title={"Profile Information"}
@@ -59,23 +61,17 @@ const PatientProfile = () => {
 			//   age= {year - patient.dateOfBirth.getFullYear()}
 			  sex={patient.sex || "Sexe inconnu"}
 			/>
+			</Box>
+			<Box padding={30}>
 			<MainDiseases
 			  title={"Main diseases"}
-			  titleDisease={"Breast Cancer"}
-			  details={{
-				description: "Type, state ...",
-			  }}
-		
 			/>
-			<MedicalHistory
+			</Box>
+		  <Box padding={30}>
+		  <MedicalHistory
 			  title={"Medical History"}
-			  titleHistory={"Allergies"}
-			  details={{
-				description: "Antibiotics, aspirin",
-			  }}
 			/>
-		  </Grid>
-  
+  		</Box>
 		</Flex>
 	  );
 	}

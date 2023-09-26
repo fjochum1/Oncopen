@@ -72,4 +72,5 @@ INSERT INTO medical_history VALUES (
     '22239856-88f7-47e4-aeed-f1e6f5a51a72'
 );
 
+
 -- DROP TABLE medical_history
