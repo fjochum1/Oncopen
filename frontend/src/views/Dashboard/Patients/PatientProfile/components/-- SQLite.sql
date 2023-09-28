@@ -38,39 +38,9 @@ CREATE TABLE medical_history (
 
     SELECT * FROM medical_history;
 
-INSERT INTO medical_history VALUES (
-	 1,
-    'F',
-    'No',
-    'No',
-    'No allergies',
-    'Active',
-    'No',
-    'N/A',
-    'No',
-    'N/A',
-    1,
-    2,
-    'None',
-    'No major issues',
-    'N/A',
-    'No surgeries',
-    'No',
-    'No family history of diseases',
-    'No',
-    'No',
-    'No family history of breast cancer',
-    'No',
-    'No',
-    'No',
-    'N/A',
-    'No',
-    'N/A',
-    'No',
-    'N/A',
-	'No',
-    '22239856-88f7-47e4-aeed-f1e6f5a51a72'
-);
+DELETE FROM medical_history WHERE id=1
+
+
 
 
 -- DROP TABLE medical_history

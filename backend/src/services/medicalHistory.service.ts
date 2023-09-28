@@ -1,5 +1,5 @@
 import MedicalHistory from '../models/medicalHistory'; // Assurez-vous que le chemin d'importation est correct
-import {getRepository,Repository } from 'typeorm';
+import {Repository } from 'typeorm';
 
 
 // if (!connection) {
@@ -18,7 +18,10 @@ export const getMedicalHistory = async (connection: any, patient_id : string) =>
       const medicalHistory = await medicalHistoryRepository.findOne({ where: { patient_id: patient_id } });
       if (!medicalHistory) {
         // Gérez le cas où l'historique médical n'est pas trouvé
-        throw new Error('Medical history not found');
+        console.log('Le patient n\'existe pas, création d\'un nouveau formulaire')
+        return null;
+        // throw new Error('Medical history not found');
+        
       }
   
       return medicalHistory;
@@ -30,19 +33,51 @@ export const getMedicalHistory = async (connection: any, patient_id : string) =>
 
 
 // // Fonction pour créer un nouvel historique médical
-export const createMedicalHistory = async (medicalHistoryData: any) => {
+export const createEmptyMedicalHistory = async (connection: any, patient_id: string) => {
   try {
     // if (!patient_id) {
     //   return Promise.reject(new Error('Le patient_id est manquant.'));
     // } // Permet de ne pas soumettre de formulaire à la base de données si nous n'avons pas de patient_id + ajouter quelque chose dans le controlleur
     // Obtenez le référentiel (repository) pour l'entité MedicalHistory
-    const medicalHistoryRepository = getRepository(MedicalHistory);
+    const medicalHistoryRepository: Repository<MedicalHistory> = connection.getRepository(MedicalHistory);
+
+    const emptyFormData = {
+      gender: "",
+      menopause: "",
+      allergies: "",
+      allergiesDescription: "",
+      lifestyle: "",
+      smoke: "",
+      smokeDescription: "",
+      alcohol: "",
+      alcoholDescription: "",
+      gynObsHistory: 0,
+      gestityParity: 0,
+      contraception: "",
+      medicalHistory: "",
+      medicalHistoryDescription: "",
+      surgicalHistory: "",
+      surgicalHistoryDescription: "",
+      familialHistory: "",
+      familialHistoryDescription: "",
+      personalFamilialHistoryCancer: "",
+      familyBreastCancerHistory: "",
+      familyBreastCancerHistoryDescription: "",
+      suspiLynch: "",
+      mutScreen: "",
+      brcaPalbMut: "",
+      brcaPalbMutDescription: "",
+      comedication: "",
+      comedicationDescription: "",
+      comedicationPlus: "",
+      comedicationPlusDescription: ""
+    };
 
     // Créez une nouvelle instance de l'entité MedicalHistory avec les données fournies
-    const newMedicalHistory = medicalHistoryRepository.create(medicalHistoryData);
-
+    const newMedicalHistory = medicalHistoryRepository.create([{...emptyFormData, patient_id: patient_id}]);    
+    
     // Enregistrez la nouvelle instance dans la base de données
-    await medicalHistoryRepository.save(newMedicalHistory);
+    await medicalHistoryRepository.insert(newMedicalHistory);
 
     // Retournez la nouvelle instance créée
     return newMedicalHistory;

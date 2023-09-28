@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'; // Importez React
 import '../../../../../styles/SettingsMedicalHistory.css';
-import { fetchMedicalHistory, createMedicalHistory, updateMedicalHistory } from '../../../../../api/fetchMedicalHistory';
+import { fetchMedicalHistory, createEmptyMedicalHistory, updateMedicalHistory } from '../../../../../api/fetchMedicalHistory';
 import {
 	Accordion,
 	AccordionItem,
@@ -50,46 +50,13 @@ function SettingsMedicalHistory({onClose}) {
     const [isGenderSelected, setIsGenderSelected] = useState(false);
     const [isPersonalFamilialSelected, setIsPersonalFamilialSelected] = useState(false);	
 
-	const [formData, setFormData] = useState({
-		gender: '',
-		menopause: '',
-		allergies: '',
-		allergiesDescription: '',
-		lifestyle: '',
-		smoke: '',
-		smokeDescription:'',
-		alcohol:'',
-		alcoholDescription:'',
-		gynObsHistory:'',
-		gestityParity:'',
-		contraception:'',
-		medicalHistory:'',
-		medicalHistoryDescription:'',
-		surgicalHistory:'',
-		surgicalHistoryDescription:'',
-		familialHistory:'',
-		familialHistoryDescription:'',
-		personalFamilialHistoryCancer:'',
-		familyBreastCancerHistory:'',
-		familyBreastCancerHistoryDescription:'',
-		suspiLynch:'',
-		mutScreen:'',
-		brcaPalbMut:'',
-		brcaPalbMutDescription:'',
-		comedication:'',
-		comedicationDescription:'',
-		comedicationPlus:'',
-		comedicationPlusDescription:'',
-	  });
 
-
+	const [formData, setFormData] = useState({});
     
 	useEffect(() => {
-		// const { patient_id } = props.match.params;
-	  	// const patient_id = '22239856-88f7-47e4-aeed-f1e6f5a51a72'
-		  const urlHash = window.location.hash;
-		  const matches = urlHash.match(/#\/patient\/([^/]+)/);
-		
+	
+		 const urlHash = window.location.hash;
+		 const matches = urlHash.match(/#\/patient\/([^/]+)/);
 		  if (matches && matches.length > 1) {
 			const patient_id = matches[1];
 		// Appelez fetchMedicalHistory avec l'ID du patient
@@ -97,47 +64,61 @@ function SettingsMedicalHistory({onClose}) {
 		  .then((formData) => {
 			console.log(formData);
 			// Si des données médicales existent, mettez-les à jour dans le state
-			if (formData) {
-				console.log('FormData')
-			  setFormData(formData);
+			if (Object.keys(formData).length === 0 && formData.constructor === Object) {
+				const emptyFormData = {};
+				const patient_id = matches[1];
+				createEmptyMedicalHistory({ patient_id, ...emptyFormData })
+				        .then((response) => {
+				          console.log(response.data.message);
+							
+				        })
+				        .catch((error) => {
+				          console.error('Erreur lors de la création des données médicales :', error);
+				        });
+		
+			
+			  console.log('Pas de FormData')
+
 			} else {
-				console.log('Pas de FormData')
+				console.log('FormData')
 				// Initialize formData with empty values
 				setFormData({
-				  gender: '',
-				  menopause: '',
-				  allergies: '',
-				  allergiesDescription: '',
-				  lifestyle: '',
-				  smoke: '',
-				  smokeDescription: '',
-				  alcohol: '',
-				  alcoholDescription: '',
-				  gynObsHistory: '',
-				  gestityParity: '',
-				  contraception: '',
-				  medicalHistory: '',
-				  medicalHistoryDescription: '',
-				  surgicalHistory: '',
-				  surgicalHistoryDescription: '',
-				  familialHistory: '',
-				  familialHistoryDescription: '',
-				  personalFamilialHistoryCancer: '',
-				  familyBreastCancerHistory: '',
-				  familyBreastCancerHistoryDescription: '',
-				  suspiLynch: '',
-				  mutScreen: '',
-				  brcaPalbMut: '',
-				  brcaPalbMutDescription: '',
-				  comedication: '',
-				  comedicationDescription: '',
-				  comedicationPlus: '',
-				  comedicationPlusDescription: '',
-				});
+					patient_id:"",
+					gender: formData.gender || "",
+					menopause: formData.menopause || "",
+					allergies: formData.allergies || "",
+					allergiesDescription: formData.allergiesDescription || "",
+					lifestyle: formData.lifestyle || "",
+					smoke: formData.smoke || "",
+					smokeDescription: formData.smokeDescription || "",
+					alcohol: formData.alcohol || "",
+					alcoholDescription: formData.alcoholDescription || "",
+					gynObsHistory: formData.gynObsHistory || "",
+					gestityParity: formData.gestityParity || "",
+					contraception: formData.contraception || "",
+					medicalHistory: formData.medicalHistory || "",
+					medicalHistoryDescription: formData.medicalHistoryDescription || "",
+					surgicalHistory: formData.surgicalHistory || "",
+					surgicalHistoryDescription: formData.surgicalHistoryDescription || "",
+					familialHistory: formData.familialHistory || "",
+					familialHistoryDescription: formData.familialHistoryDescription || "",
+					personalFamilialHistoryCancer: formData.personalFamilialHistoryCancer || "",
+					familyBreastCancerHistory: formData.familialBreastCancerHistory || "",
+					familyBreastCancerHistoryDescription: formData.familyBreastCancerHistoryDescription || "",
+					suspiLynch: formData.suspiLynch || "",
+					mutScreen: formData.mutScreen || "",
+					brcaPalbMut: formData.brcaPalbMut || "",
+					brcaPalbMutDescription: formData.brcaPalbMutDescription || "",
+					comedication: formData.comedication || "",
+					comedicationDescription: formData.comedicationDescription || "",
+					comedicationPlus: formData.comedicationPlus || "",
+					comedicationPlusDescription: formData.comedicationPlusDescription || ""
+				  });
 			  }
 		  }) 
 		  .catch((error) => {
 			console.error('Erreur lors de la récupération des données médicales :', error);
+			
 		  }); 
 		} else {
 			console.error('L\'URL ne contient pas d\'ID de patient valide.');
@@ -145,42 +126,49 @@ function SettingsMedicalHistory({onClose}) {
 	  }, []);
 
 
-	  
 
+	  
 	const handleGenderChange = (event) => {const value = event.target.value; setIsGenderSelected(value === 'F') ; setFormData ({...formData, gender: value})};
-	const handleMenopauseChange = (event) => {const value = event.target.value; setFormData({ ...formData, menopause: value });}
+	const handleMenopauseChange = (event) => {const value = event.target.value; setFormData({ ...formData, menopause: value })};
 	const handleAllergiesChange = (event) => { const value = event.target.value; setIsAllergiesSelected(value === 'Yes'); setFormData ({...formData, allergies: value})}
-	const handleAllergiesDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, allergiesDescription: value });}
-	const handleLifestyleChange = (event) => {const value = event.target.value; setFormData({ ...formData, lifestyle: value });}
+	const handleAllergiesDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, allergiesDescription: value })};
+	const handleLifestyleChange = (event) => {const value = event.target.value; setFormData({ ...formData, lifestyle: value })};
 	const handleSmokeChange = (event) => {const value = event.target.value; setIsSmokeSelected(value === 'Yes') ; setFormData ({...formData, smoke: value})};
-	const handleSmokeDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, smokeDescription: value });}
+	const handleSmokeDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, smokeDescription: value })};
 	const handleAlcoholChange = (event) => {const value = event.target.value; setIsAlcoholSelected(value === 'Yes') ; setFormData ({...formData, alcohol: value})};
-	const handleAlcoholDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, alcoholDescription: value });}
-	const handleGynObsChange = (event) => {const value = event.target.value; setFormData({ ...formData, gynObsHistory: value });}
-	const handleGestityParityChange = (event) => {const value = event.target.value; setFormData({ ...formData, gestityParity: value });}	
-	const handleContraceptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, contraception: value });}
+	const handleAlcoholDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, alcoholDescription: value })};
+	const handleGynObsChange = (event) => {const value = event.target.value; setFormData({ ...formData, gynObsHistory: value })};
+	const handleGestityParityChange = (event) => {const value = event.target.value; setFormData({ ...formData, gestityParity: value })};	
+	const handleContraceptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, contraception: value })};
     const handleMedicalChange = (event) => {const value = event.target.value; setIsMedicalSelected(value === 'Yes') ; setFormData ({...formData, medicalHistory: value})};
-	const handleMedicalDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, medicalHistoryDescription: value });}
+	const handleMedicalDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, medicalHistoryDescription: value })};
 	const handleSurgicalChange = (event) => {const value = event.target.value; setIsSurgicalSelected(value === 'Yes') ; setFormData ({...formData, surgicalHistory: value})};
-	const handleSurgicalDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, surgicalHistoryDescription: value });}
+	const handleSurgicalDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, surgicalHistoryDescription: value })};
 	const handleFamilialChange = (event) => {const value = event.target.value; setIsFamilialSelected(value === 'Yes') ; setFormData ({...formData, familyHistory: value})};
-	const handleFamilialDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, familialHistoryDescription: value });}
+	const handleFamilialDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, familialHistoryDescription: value })};
 	const handlePersonalFamilialChange = (event) => {const value = event.target.value; setIsPersonalFamilialSelected(value === 'Yes') ; setFormData ({...formData, personalFamilialHistoryCancer: value})};
 	const handleFamilialBreastChange = (event) => {const value = event.target.value; setIsFamilialBreastSelected(value === 'Yes') ; setFormData ({...formData, familialBreastCancerHistory: value})};
-	const handleFamilialBreastDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, familyBreastCancerHistoryDescription: value });}
-	const handleSuspiLynchChange = (event) => {const value = event.target.value; setFormData({ ...formData, suspiLynch: value });}
-	const handleMutScreenChange = (event) => {const value = event.target.value; setFormData({ ...formData, mutScreen: value });}
-	const handleBrcaPalbMutChange = (event) => {const value = event.target.value; setFormData({ ...formData, brcaPalbMut: value });}
-	const handleBrcaPalbMutDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, brcaPalbMutDescription: value });}
+	const handleFamilialBreastDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, familyBreastCancerHistoryDescription: value })};
+	const handleSuspiLynchChange = (event) => {const value = event.target.value; setFormData({ ...formData, suspiLynch: value })};
+	const handleMutScreenChange = (event) => {const value = event.target.value; setFormData({ ...formData, mutScreen: value })};
+	const handleBrcaPalbMutChange = (event) => {const value = event.target.value; setFormData({ ...formData, brcaPalbMut: value })};
+	const handleBrcaPalbMutDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, brcaPalbMutDescription: value })};
 	const handleComedicationChange = (event) => {const value = event.target.value; setIsComedicationSelected(value === 'Yes') ; setFormData ({...formData, comedication: value})};
-	const handleComedicationDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, comedicationDescription: value });}
+	const handleComedicationDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, comedicationDescription: value })};
 	const handleComedicationPlusChange = (event) => {const value = event.target.value; setIsComedicationPlusSelected(value === 'Yes') ; setFormData ({...formData, comedicationPlus: value})};
 	const handleComedicationPlusDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, comedicationPlusDescritpion: value });}
-
 	  
+
+	
 
 const handleSaveData = () => {
   // Créez un objet avec les données du formulaire que vous souhaitez envoyer
+  if (!formData.gender || !formData.allergies || !formData.lifestyle || !formData.smoke ||  !formData.alcohol ||  !formData.medicalHistory || !formData.surgicalHistory ||  !formData.familialHistory ||  !formData.personalFamilialHistoryCancer || 
+	 !formData.comedication || !formData.comedicationPlus ) {
+	alert("Veuillez remplir tous les champs obligatoires.");
+
+	return;
+  } 
   const formDataToSend = {
     gender: formData.gender,
     menopause: formData.menopause,
@@ -213,22 +201,6 @@ const handleSaveData = () => {
 	comedicationPlusDescription: formData.comedicationPlusDescription,
   
   };
-  if (Object.keys(formData).length === 0) {
-
-	// createMedicalHistory({ patient_id, ...formDataToSend })
-    //         .then((response) => {
-    //           console.log(response.data.message);
-	// 			const updatedFormData = response.data.formData; // Assurez-vous de renvoyer les données depuis le serveur
-    // 			setFormData(updatedFormData);
-    //           onClose();
-    //         })
-    //         .catch((error) => {
-    //           console.error('Erreur lors de la création des données médicales :', error);
-    //         });
-
-	console.log('Partie create')
-
-  } else {
 	const urlHash = window.location.hash;
 	const matches = urlHash.match(/#\/patient\/([^/]+)/);
   
@@ -245,8 +217,9 @@ const handleSaveData = () => {
       });
   } else {
 	console.error('L\'URL ne contient pas d\'ID de patient valide.');
-  }}
+  }
 };
+
 
 
   return (
@@ -270,10 +243,10 @@ const handleSaveData = () => {
 					</FormLabel>
 					<RadioGroup>
 						<HStack spacing='100px'>
-							<Radio value='M' type="radio" onChange={handleGenderChange} checked={formData.gender === 'M'}>
+							<Radio value='M' type="radio" onChange={handleGenderChange} isChecked={formData.gender === 'M'}>
 								M
 							</Radio>
-							<Radio value='F' type="radio" onChange={handleGenderChange} checked={formData.gender === 'F'}>
+							<Radio value='F' type="radio" onChange={handleGenderChange} isChecked={formData.gender === 'F'}>
 								F
 							</Radio>
 						</HStack>
@@ -287,10 +260,10 @@ const handleSaveData = () => {
 					</FormLabel>
 					<RadioGroup>
 						<HStack spacing='100px'>
-							<Radio value='Yes' type="radio" onChange={handleMenopauseChange} checked={formData.menopause === 'Yes'}>
+							<Radio value='Yes' type="radio" isChecked={formData.menopause === 'Yes'} onChange={handleMenopauseChange} >
 								Yes
 							</Radio>
-							<Radio value='No' type="radio" onChange={handleMenopauseChange} checked={formData.menopause === 'No'}>
+							<Radio value='No' type="radio" isChecked={formData.menopause === 'No'} onChange={handleMenopauseChange} >
 								No
 							</Radio>
 						</HStack>

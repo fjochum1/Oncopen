@@ -46,13 +46,14 @@ const PatientProfile = () => {
 	}
 	return (
 		<Flex direction='column'>
+			<Box>
 		  <Header
 			backgroundHeader={backgroundHeader}
 			backgroundProfile={bgProfile}
 			name={`${patient.firstName || "Prénom inconnu"} ${patient.lastName || "Nom Inconnu"}`}
 		  />
-		  <Box padding={30}>
-
+		  </Box>
+		  <Box paddingTop={30}>
 			<ProfileInformation
 			  title={"Profile Information"}
 			  firstname={patient.firstName || "Prénom Inconnu"}
@@ -62,12 +63,12 @@ const PatientProfile = () => {
 			  sex={patient.sex || "Sexe inconnu"}
 			/>
 			</Box>
-			<Box padding={30}>
+			<Box paddingTop={30}>
 			<MainDiseases
 			  title={"Main diseases"}
 			/>
 			</Box>
-		  <Box padding={30}>
+		  <Box paddingTop={30}>
 		  <MedicalHistory
 			  title={"Medical History"}
 			/>

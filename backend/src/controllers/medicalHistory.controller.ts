@@ -1,7 +1,7 @@
 // medicalHistoryController.js
 
 import { Request, Response } from 'express'; // Importez les types Request et Response d'Express
-import { getMedicalHistory, updateMedicalHistory, createMedicalHistory } from '../services/medicalHistory.service';
+import { getMedicalHistory, updateMedicalHistory, createEmptyMedicalHistory } from '../services/medicalHistory.service';
 import { connection } from '../server/database';
 
 // Contrôleur pour obtenir l'historique médical d'un patient
@@ -28,10 +28,10 @@ export const getMedicalHistoryController = async (req:Request, res:Response) => 
 // Contrôleur pour créer un nouvel historique médical
 // const newMedicalHistory = await createMedicalHistory(connection, medicalHistoryData);
 
-export const createMedicalHistoryController = async (req:Request, res:Response) => {
-  const medicalHistoryData = req.body;
+export const createEmptyMedicalHistoryController = async (req:Request, res:Response) => {
+  const patient_id = req.body.patient_id;
   try {
-    const newMedicalHistory = await createMedicalHistory(medicalHistoryData);
+    const newMedicalHistory = await createEmptyMedicalHistory(connection, patient_id);
     res.status(201).json(newMedicalHistory);
   } catch (error) {
     console.error(`Create operation failed: ${error}`);
