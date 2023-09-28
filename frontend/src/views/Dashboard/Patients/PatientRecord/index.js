@@ -34,7 +34,7 @@ const PatientRecord = () => {
     { Header: 'First name', accessor: 'firstName' },
     { Header: 'Last name', accessor: 'lastName' },
     { Header: 'Date of birth', accessor: 'dateOfBirth' },
-    { Header: 'Sex', accessor: 'sex' },
+    { Header: 'Sex', accessor: 'sex' },    
   ];
 
   return (

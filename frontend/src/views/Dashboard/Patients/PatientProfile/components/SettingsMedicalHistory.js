@@ -12,27 +12,15 @@ import {
 import {
 	Flex,
 	Box,
-	Text,
+	Radio,
     RadioGroup,
     HStack,
-    Radio,
     Select,
 	Input,
-	InputGroup,
-	InputLeftAddon,
 	FormControl,
 	FormLabel,
 	Button,
-	Grid,
     Textarea,
-    Modal,
-    ModalBody,
-    ModalOverlay,
-    ModalHeader, 
-    ModalCloseButton,
-    ModalContent,
-    ModalFooter,
-    Tabs, TabList, TabPanel, TabPanels, Tab
 } from "@chakra-ui/react";
 
 
@@ -114,6 +102,73 @@ function SettingsMedicalHistory({onClose}) {
 					comedicationPlus: formData.comedicationPlus || "",
 					comedicationPlusDescription: formData.comedicationPlusDescription || ""
 				  });
+
+				  if (formData.gender === 'F') {
+					setIsGenderSelected(true);
+				  } else {
+					setIsGenderSelected(false);
+				  }
+
+				  if (formData.allergies === 'Yes') {
+					setIsAllergiesSelected(true);
+				  } else {
+					setIsAllergiesSelected(false);
+				  }
+
+				  if (formData.smoke === 'Yes') {
+					setIsSmokeSelected(true);
+				  } else {
+					setIsSmokeSelected(false);
+				  }
+				  if (formData.medicalHistory === 'Yes') {
+					setIsMedicalSelected(true);
+				  } else {
+					setIsMedicalSelected(false);
+				  }
+				  if (formData.surgicalHistory === 'Yes') {
+					setIsSurgicalSelected(true);
+				  } else {
+					setIsSurgicalSelected(false);
+				  }
+				  if (formData.familyHistory === 'Yes') {
+					setIsFamilialSelected(true);
+				  } else {
+					setIsFamilialSelected(false);
+				  }
+				  if (formData.familialBreastCancerHistory === 'Yes') {
+					setIsFamilialBreastSelected(true);
+				  } else {
+					setIsFamilialBreastSelected(false);
+				  }
+				  if (formData.alcohol === 'Yes') {
+					setIsAlcoholSelected(true);
+				  } else {
+					setIsAlcoholSelected(false);
+				  }
+				  if (formData.comedication === 'Yes') {
+					setIsComedicationSelected(true);
+				  } else {
+					setIsComedicationSelected(false);
+				  }
+				  if (formData.comedicationPlus === 'Yes') {
+					setIsComedicationPlusSelected(true);
+				  } else {
+					setIsComedicationPlusSelected(false);
+				  }
+				  if (formData.personalFamilialHistoryCancer === 'Yes') {
+					setIsPersonalFamilialSelected(true);
+				  } else {
+					setIsPersonalFamilialSelected(false);
+				  }
+				  if (formData.familialBreastCancerHistory === 'Yes') {
+					setIsFamilialBreastSelected(true);
+				  } else {
+					setIsFamilialBreastSelected(false);
+				  }
+				 
+			  
+
+
 			  }
 		  }) 
 		  .catch((error) => {
@@ -144,7 +199,7 @@ function SettingsMedicalHistory({onClose}) {
 	const handleMedicalDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, medicalHistoryDescription: value })};
 	const handleSurgicalChange = (event) => {const value = event.target.value; setIsSurgicalSelected(value === 'Yes') ; setFormData ({...formData, surgicalHistory: value})};
 	const handleSurgicalDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, surgicalHistoryDescription: value })};
-	const handleFamilialChange = (event) => {const value = event.target.value; setIsFamilialSelected(value === 'Yes') ; setFormData ({...formData, familyHistory: value})};
+	const handleFamilialChange = (event) => {const value = event.target.value; setIsFamilialSelected(value === 'Yes') ; setFormData ({...formData, familialHistory: value})};
 	const handleFamilialDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, familialHistoryDescription: value })};
 	const handlePersonalFamilialChange = (event) => {const value = event.target.value; setIsPersonalFamilialSelected(value === 'Yes') ; setFormData ({...formData, personalFamilialHistoryCancer: value})};
 	const handleFamilialBreastChange = (event) => {const value = event.target.value; setIsFamilialBreastSelected(value === 'Yes') ; setFormData ({...formData, familialBreastCancerHistory: value})};
@@ -156,7 +211,7 @@ function SettingsMedicalHistory({onClose}) {
 	const handleComedicationChange = (event) => {const value = event.target.value; setIsComedicationSelected(value === 'Yes') ; setFormData ({...formData, comedication: value})};
 	const handleComedicationDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, comedicationDescription: value })};
 	const handleComedicationPlusChange = (event) => {const value = event.target.value; setIsComedicationPlusSelected(value === 'Yes') ; setFormData ({...formData, comedicationPlus: value})};
-	const handleComedicationPlusDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, comedicationPlusDescritpion: value });}
+	const handleComedicationPlusDescriptionChange = (event) => {const value = event.target.value; setFormData({ ...formData, comedicationPlusDescription: value });}
 	  
 
 	
@@ -224,7 +279,7 @@ const handleSaveData = () => {
 
   return (
 
-<Accordion>
+<Accordion  allowMultiple>
 	
   <AccordionItem>
     <h2>
@@ -241,12 +296,12 @@ const handleSaveData = () => {
 					<FormLabel as='legend'>
 						Gender  
 					</FormLabel>
-					<RadioGroup>
+					<RadioGroup  value={formData.gender}>
 						<HStack spacing='100px'>
-							<Radio value='M' type="radio" onChange={handleGenderChange} isChecked={formData.gender === 'M'}>
+							<Radio value='M'   onChange={handleGenderChange}>
 								M
 							</Radio>
-							<Radio value='F' type="radio" onChange={handleGenderChange} isChecked={formData.gender === 'F'}>
+							<Radio value='F' onChange={handleGenderChange}>
 								F
 							</Radio>
 						</HStack>
@@ -258,12 +313,12 @@ const handleSaveData = () => {
 					<FormLabel as='legend'>
 						Menopause  
 					</FormLabel>
-					<RadioGroup>
+					<RadioGroup value={formData.menopause}>
 						<HStack spacing='100px'>
-							<Radio value='Yes' type="radio" isChecked={formData.menopause === 'Yes'} onChange={handleMenopauseChange} >
+							<Radio value='Yes' type="radio" onChange={handleMenopauseChange} >
 								Yes
 							</Radio>
-							<Radio value='No' type="radio" isChecked={formData.menopause === 'No'} onChange={handleMenopauseChange} >
+							<Radio value='No' type="radio"  onChange={handleMenopauseChange} >
 								No
 							</Radio>
 						</HStack>
@@ -277,12 +332,12 @@ const handleSaveData = () => {
 					<FormLabel as='legend'>
 						Allergies  
 					</FormLabel>
-					<RadioGroup>
+					<RadioGroup value={formData.allergies}>
 						<HStack spacing='100px'>
-							<Radio value='Yes' onChange={handleAllergiesChange} checked={formData.allergies === 'Yes'}>
+							<Radio value='Yes' onChange={handleAllergiesChange} >
 								Yes
 							</Radio>
-							<Radio value='No'onChange={handleAllergiesChange} checked={formData.allergies === 'No'}>
+							<Radio value='No'onChange={handleAllergiesChange} >
 								No
 							</Radio>
 						</HStack>
@@ -302,12 +357,12 @@ const handleSaveData = () => {
 				<FormLabel as='legend'>
 					Smoke  
 				</FormLabel>
-				<RadioGroup>
+				<RadioGroup value={formData.smoke}>
 					<HStack mb={3} spacing='100px'>
-						<Radio value='Yes'onChange={handleSmokeChange} checked={formData.smoke === 'Yes'} >
+						<Radio value='Yes'onChange={handleSmokeChange} >
 							Yes
 						</Radio>
-						<Radio value='No'onChange={handleSmokeChange} checked={formData.smoke === 'No'}>
+						<Radio value='No'onChange={handleSmokeChange} >
 							No
 						</Radio>
 					</HStack>
@@ -332,12 +387,12 @@ const handleSaveData = () => {
 					<FormLabel as='legend'>
 						Alcohol  
 					</FormLabel>
-					<RadioGroup>
+					<RadioGroup value={formData.alcohol}>
 						<HStack spacing='100px'>
-							<Radio value='Yes'onChange={handleAlcoholChange} checked={formData.alcohol === 'Yes'}>
+							<Radio value='Yes'onChange={handleAlcoholChange}>
 								Yes
 							</Radio>
-							<Radio value='No'onChange={handleAlcoholChange} checked={formData.alcohol === 'No'}>
+							<Radio value='No'onChange={handleAlcoholChange}>
 								No
 							</Radio>
 						</HStack>
@@ -440,12 +495,12 @@ const handleSaveData = () => {
 					<FormLabel as='legend'>
 						Medical History  
 					</FormLabel>
-					<RadioGroup>
+					<RadioGroup value={formData.medicalHistory}>
 						<HStack spacing='100px'>
-							<Radio value='Yes'onChange={handleMedicalChange} checked={formData.medicalHistory === 'Yes'}>
+							<Radio value='Yes' onChange={handleMedicalChange}>
 								Yes
 							</Radio>
-							<Radio value='No'onChange={handleMedicalChange} checked={formData.medicalHistory === 'No'}>
+							<Radio value='No' onChange={handleMedicalChange}>
 								No
 							</Radio>
 						</HStack>
@@ -460,12 +515,12 @@ const handleSaveData = () => {
 					<FormLabel as='legend'>
 						Surgical History
 					</FormLabel>
-					<RadioGroup>
+					<RadioGroup value={formData.surgicalHistory}>
 						<HStack spacing='100px'>
-							<Radio value='Yes'onChange={handleSurgicalChange} checked={formData.surgicalHistory === 'Yes'}>
+							<Radio value='Yes'onChange={handleSurgicalChange} >
 								Yes
 							</Radio>
-							<Radio value='No'onChange={handleSurgicalChange} checked={formData.surgicalHistory === 'No'}>
+							<Radio value='No'onChange={handleSurgicalChange} >
 								No
 							</Radio>
 						</HStack>
@@ -480,12 +535,12 @@ const handleSaveData = () => {
 					<FormLabel as='legend'>
 						Family history
 					</FormLabel>
-					<RadioGroup>
+					<RadioGroup value={formData.familialHistory}>
 						<HStack spacing='100px'>
-							<Radio value='Yes'onChange={handleFamilialChange} checked={formData.familialHistory === 'Yes'}>
+							<Radio value='Yes'onChange={handleFamilialChange}>
 								Yes
 							</Radio>
-							<Radio value='No'onChange={handleFamilialChange} checked={formData.familialHistory === 'No'}>
+							<Radio value='No'onChange={handleFamilialChange}>
 								No
 							</Radio>
 						</HStack>
@@ -502,33 +557,29 @@ const handleSaveData = () => {
                     Personal or familial history of cancer
 					{/* Personal or family history of cancer  (si ça s'ouvre, les 3 autres s'ouvrent + brca + enlever brca palb mut en gardant juste mut screen avec select de brca palb mut )  */}
 				</FormLabel>
-				<RadioGroup>
+				<RadioGroup value={formData.personalFamilialHistoryCancer}>
 					<HStack mb={3} spacing='100px'>
-						<Radio value='Yes' onChange={handlePersonalFamilialChange} checked={formData.personalFamilialHistoryCancer === 'Yes'}>
+						<Radio value='Yes' onChange={handlePersonalFamilialChange}>
 							Yes
 						</Radio>
-						<Radio value='No' onChange={handlePersonalFamilialChange} checked={formData.personalFamilialHistoryCancer === 'No'}>
+						<Radio value='No' onChange={handlePersonalFamilialChange}>
 							No
 						</Radio>
 					</HStack>
 				</RadioGroup>
 			</FormControl>
-            
-            
-		
-
         {isPersonalFamilialSelected &&( 
                 <FormControl mb={4}>
 				<FormControl >
 					<FormLabel as='legend'>
 						Familial breast cancer history
 					</FormLabel>
-					<RadioGroup>
+					<RadioGroup value={formData.familialBreastCancerHistory}>
 						<HStack spacing='100px'>
-							<Radio value='Yes'onChange={handleFamilialBreastChange} checked={formData.familyBreastCancerHistory === 'Yes'}>
+							<Radio value='Yes'onChange={handleFamilialBreastChange}>
 								Yes
 							</Radio>
-							<Radio value='No'onChange={handleFamilialBreastChange} checked={formData.familyBreastCancerHistory === 'No'}>
+							<Radio value='No'onChange={handleFamilialBreastChange}>
 								No
 							</Radio>
 						</HStack>
@@ -544,12 +595,12 @@ const handleSaveData = () => {
 				<FormLabel as='legend'>
 					Suspi_lynch  
 				</FormLabel>
-				<RadioGroup>
+				<RadioGroup value={formData.suspiLynch}>
 					<HStack mb={3} spacing='100px'>
-						<Radio value='Yes' onChange={handleSuspiLynchChange} checked={formData.suspiLynch === 'Yes'}>
+						<Radio value='Yes' onChange={handleSuspiLynchChange}>
 							Yes
 						</Radio>
-						<Radio value='No' onChange={handleSuspiLynchChange} checked={formData.suspiLynch === 'No'}>
+						<Radio value='No' onChange={handleSuspiLynchChange}>
 							No
 						</Radio>
 					</HStack>
@@ -560,12 +611,12 @@ const handleSaveData = () => {
 				<FormLabel as='legend'>
 					Mut_screen  
 				</FormLabel>
-				<RadioGroup>
+				<RadioGroup value={formData.mutScreen}>
 					<HStack mb={3} spacing='100px'>
-						<Radio value='Yes' onChange={handleMutScreenChange} checked={formData.mutScreen === 'Yes'}>
+						<Radio value='Yes' onChange={handleMutScreenChange}>
 							Yes
 						</Radio>
-						<Radio value='No' onChange={handleMutScreenChange} checked={formData.mutScreen === 'No'}>
+						<Radio value='No' onChange={handleMutScreenChange}>
 							No
 						</Radio>
 					</HStack>
@@ -595,12 +646,12 @@ const handleSaveData = () => {
 					<FormLabel as='legend'>
 						Comedication
 					</FormLabel>
-					<RadioGroup>
+					<RadioGroup value={formData.comedication}>
 						<HStack spacing='100px'>
-							<Radio value='Yes'onChange={handleComedicationChange} checked={formData.comedication === 'Yes'}>
+							<Radio value='Yes'onChange={handleComedicationChange}>
 								Yes
 							</Radio>
-							<Radio value='No'onChange={handleComedicationChange} checked={formData.comedication === 'No'}>
+							<Radio value='No'onChange={handleComedicationChange}>
 								No
 							</Radio>
 						</HStack>
@@ -614,20 +665,21 @@ const handleSaveData = () => {
 					<FormLabel as='legend'>
 						More than 3 comedications ? 
 					</FormLabel>
-					<RadioGroup>
+					<RadioGroup value={formData.comedicationPlus}>
 						<HStack spacing='100px'>
-							<Radio value='Yes'onChange={handleComedicationPlusChange} checked={formData.comedicationPlus === 'Yes'}>
+							<Radio value='Yes'onChange={handleComedicationPlusChange}>
 								Yes
 							</Radio>
-							<Radio value='No'onChange={handleComedicationPlusChange} checked={formData.comedicationPlus === 'No'}>
+							<Radio value='No'onChange={handleComedicationPlusChange}>
 								No
 							</Radio>
 						</HStack>
 					</RadioGroup>
 				</FormControl>
 				{isComedicationPlusSelected && (
-				<Textarea onChange={handleComedicationPlusDescriptionChange} placeholder='Comedication' value={formData.comedicationPlusDescription} _focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }} />
+				<Textarea onChange={handleComedicationPlusDescriptionChange} placeholder='' value={formData.comedicationPlusDescription} _focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }} />
 				)}
+				
 			</FormControl>
 			</FormControl>
 	</Box>
