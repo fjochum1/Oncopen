@@ -33,12 +33,12 @@ CREATE TABLE medical_history (
 	comedicationPlus VARCHAR(10),
 	comedicationPlusDescription TEXT,
     patient_id VARCHAR(255),
-    FOREIGN KEY (patient_id) REFERENCES patient (id)
+    FOREIGN KEY (patient_id) REFERENCES patient (id) ON DELETE CASCADE
     );
 
     SELECT * FROM medical_history;
 
-DELETE FROM medical_history WHERE id=1
+-- DELETE FROM medical_history WHERE id=1
 
 
 

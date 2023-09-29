@@ -56,8 +56,8 @@ const PatientProfile = () => {
 		  <Box paddingTop={30}>
 			<ProfileInformation
 			  title={"Profile Information"}
-			  firstname={patient.firstName || "Prénom Inconnu"}
-			  lastname={patient.lastName || "Nom Inconnu"}
+			  firstName={patient.firstName || "Prénom Inconnu"}
+			  lastName={patient.lastName || "Nom Inconnu"}
 			  dateOfBirth={patient.dateOfBirth || "Date de naissance inconnue"}
 			//   age= {year - patient.dateOfBirth.getFullYear()}
 			  sex={patient.sex || "Sexe inconnu"}

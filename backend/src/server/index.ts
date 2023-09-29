@@ -10,9 +10,11 @@ import routes from '../routes/users';
 import sessionRoute from '../routes/session.route'
 import patientRoute from '../routes/patient';
 import patientGetRoute from '../routes/patientGet';
+import patientDelete from '../routes/patientDelete';
 import userGetRoute from '../routes/userGet';
 import patientGetIdRoute from '../routes/patientGetId';
 import medicalHistory from '../routes/medicalHistory'; 
+import patientUpdate from '../routes/patientUpdate'
 
 import { connect } from './database';
 
@@ -54,6 +56,9 @@ server.use('/api/patientGet', patientGetRoute);
 server.use('/api/userGet', userGetRoute);
 server.use('/api/patientGetId', patientGetIdRoute);
 server.use('/api/medicalHistory', medicalHistory);
+server.use('/api/patientDelete', patientDelete)
+server.use('/api/patientUpdate', patientUpdate)
+
 
 
 export default server;

@@ -14,4 +14,6 @@ const fetchPatients = async () => {
   }
 };
 
+
+
 export default fetchPatients;
