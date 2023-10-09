@@ -30,7 +30,7 @@ const ProfileInformation = ({
 
   useEffect(() => {
     // Calculate the age based on date of birth and current date
-    if (dateOfBirth) {
+    
       const [day, month, year] = dateOfBirth.split('/');
 
       const birthDate = new Date(year, month - 1, day);
@@ -40,7 +40,7 @@ const ProfileInformation = ({
       const calculatedAge = Math.abs(ageDate.getUTCFullYear() - 1970);
 
       setAge(calculatedAge);
-    }
+    
   }, [dateOfBirth]);
   
   return (
@@ -57,10 +57,7 @@ const ProfileInformation = ({
         h='16px'
         variant='no-hover'
         ml='auto' // Aligne le bouton à droite
-        onClick={handleEditClick} // Appel du gestionnaire d'événements au clic
-
-     
-        
+        onClick={handleEditClick} // Appel du gestionnaire d'événements au clic 
       >
       <Icon as={FaPencilAlt} />
      

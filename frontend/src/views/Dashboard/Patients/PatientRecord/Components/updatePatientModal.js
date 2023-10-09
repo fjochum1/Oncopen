@@ -27,8 +27,7 @@ const UpdatePatientModal = ({ onClose }) => {
   const history = useHistory(); // Utilisez useHistory pour accéder à l'objet d'historique
   const urlHash = window.location.hash;
   const matches = urlHash.match(/#\/patient\/([^/]+)/);
-  const [formattedDateOfBirth, setFormattedDateOfBirth] = useState('');
-  const moment = require('moment');
+  // const [formattedDateOfBirth, setFormattedDateOfBirth] = useState('');
 
   // Extrait l'ID du patient à partir de l'URL
   let patientId = null;
@@ -43,34 +42,28 @@ const UpdatePatientModal = ({ onClose }) => {
   // Effet pour charger les données du patient lors de l'ouverture du modal
   useEffect(() => {
     if (patientId) {
-      const fetchPatientData = async () => {
-        try {
-          // Chargez les données du patient en utilisant l'ID extrait de l'URL
-          const response = await fetchPatientById(patientId);
-          const dateOfBirth = moment(response.dateOfBirth).format('YYYY-MM-DD');
-
-
-          setPatientData(response); // Mettez à jour les données du patient avec la réponse de l'API
-          setFormattedDateOfBirth(dateOfBirth);
-
-        } catch (error) {
-          console.error('Erreur lors de la récupération des données du patient:', error);
-          history.push('/erreur'); // Redirigez l'utilisateur vers une page d'erreur en cas d'erreur
-        }
-      };
+      async function fetchPatientData() {
+        const patientData = await fetchPatientById(patientId);
+        const rawDateOfBirth = patientData.dateOfBirth; // Assurez-vous que dateOfBirth est au bon format
+        const dateOfBirth = new Date(rawDateOfBirth);
+  
+        // Utilisez les méthodes de Date pour extraire la journée, le mois et l'année
+        const day = dateOfBirth.getDate();
+        const month = dateOfBirth.getMonth() + 1; // Les mois commencent à 0, donc ajoutez 1
+        const year = dateOfBirth.getFullYear();
+  
+        // Formatez la date de naissance comme "jj/mm/aaaa"
+        const formattedDateOfBirth = `${day}/${month}/${year}`;
+  
+        const formattedPatient = { ...patientData, dateOfBirth: formattedDateOfBirth };
+        setPatientData(patientData);
+      }
 
       fetchPatientData();
     }
   }, [patientId, history]);
 
-  const handleInputChange = (e) => {
-    // Mettez à jour les données du patient lors de la saisie dans le formulaire
-    const { name, value } = e.target;
-    setPatientData({
-      ...patientData,
-      [name]: value,
-    });
-  };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Empêchez la soumission du formulaire par défaut
@@ -92,6 +85,15 @@ const UpdatePatientModal = ({ onClose }) => {
     } catch (error) {
       console.error('Erreur lors de la mise à jour du patient:', error);
     }
+  };
+
+  const handleInputChange = (e) => {
+    // Mettez à jour les données du patient lors de la saisie dans le formulaire
+    const { name, value } = e.target;
+    setPatientData({
+      ...patientData,
+      [name]: value,
+    });
   };
 
   return (
@@ -128,7 +130,7 @@ const UpdatePatientModal = ({ onClose }) => {
               <Input
                 type="date"
                 name="dateOfBirth"
-                value={formattedDateOfBirth}
+                value={patientData.dateOfBirth}
                 onChange={handleInputChange}
                 _focus={{ borderColor: "#94aca4", boxShadow: "0 0 0 1px #94aca4", borderWidth: "2px" }}
               />

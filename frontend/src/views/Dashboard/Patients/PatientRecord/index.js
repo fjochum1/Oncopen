@@ -40,16 +40,28 @@ const PatientRecord = () => {
   };
   }
 
-  
+  const formatDate = (dateOfBirth) => {
+    const rawDate = new Date(dateOfBirth);
+  const formattedDate = rawDate.toLocaleDateString(); // Formatage de la date
+  return formattedDate;
+  };
 
   const fetchData = async () => {
-	const patients = await fetchPatients();
-	const formattedPatientsData = patients.map(patient => ({
-	  ...patient,
-	  dateOfBirth: new Date(parseFloat(patient.dateOfBirth)).toLocaleDateString()
-	}));
-	setPatientsData(formattedPatientsData);
-  };
+    const patients = await fetchPatients();
+    console.log("Données des patients:", patients); // Vérifiez les données renvoyées par l'API
+
+    const formattedPatients = patients.map((patient) => ({
+      ...patient,
+      dateOfBirth: formatDate(patient.dateOfBirth),
+    }));
+    setPatientsData(formattedPatients);
+    };
+
+  
+
+  
+
+  
 
   useEffect(() => {
 	fetchData();
@@ -62,7 +74,7 @@ const PatientRecord = () => {
   const columnsData = [
     { Header: 'First name', accessor: 'firstName' },
     { Header: 'Last name', accessor: 'lastName' },
-    { Header: 'Date of birth', accessor: 'dateOfBirth' },
+    { Header: 'Date of birth', accessor: 'dateOfBirth', Cell: ({ value }) => formatDate(value) }, // Utilisez formatDate pour formater la date de naissance
     { Header: 'Sex', accessor: 'sex' },   
     {
       Header: 'Actions',

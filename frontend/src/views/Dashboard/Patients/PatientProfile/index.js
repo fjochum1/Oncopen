@@ -36,7 +36,7 @@ const PatientProfile = () => {
        // Mettez à jour l'objet patient avec la date de naissance formatée
        const formattedPatient = { ...patientData, dateOfBirth: formattedDateOfBirth };
 	   setPatient(formattedPatient);
-            //setPatient(patientData);	  
+            // setPatient(patientData);	  
         }
         fetchData();
     }, [id]); //Pour déclencher mon useEffect seulement quand mon id change (et donc que je change de patient)
