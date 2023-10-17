@@ -15,32 +15,38 @@ const ProfileInformation = ({
   lastname,
   sex,
   dateOfBirth,
-  age
+  age,
+  address,
+  city,
+  postalCode,
+  country,
+  referringDoctor,
+  generalDoctor
 }) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
 
 
-  
+
   return (
-    <Card p='16px' my={{ sm: "24px", xl: "0px" }}>
-      <CardHeader p='12px 5px' mb='12px'>
+    <Card p='16px' my={{ sm: "24px", xl: "0px" }} boxShadow="0px 3px 7px rgba(0, 0, 0, 0.09)">
+      <CardHeader p='12px 5px'>
         <Text fontSize='lg' color={textColor} fontWeight='bold'>
           {title}
         </Text>
-        <Button
+        {/*<Button
         p='0px'
         bg='transparent'
         w='16px'
         h='16px'
         variant='no-hover'
         ml='auto' // Aligne le bouton à droite
-     
-        
+
+
       >
-      <Icon as={FaPencilAlt} />
-     
-      </Button>
+      <Icon as={FaPencilAlt} />*/}
+
+      {/*</Button>*/}
       </CardHeader>
       <CardBody px='5px'>
         <Flex direction='column'>
@@ -76,7 +82,7 @@ const ProfileInformation = ({
                Age:{" "}
             </Text>
             <Text fontSize='md' color='gray.500' fontWeight='400'>
-              {age} years 
+              {age} years
             </Text>
           </Flex>
 
@@ -89,7 +95,62 @@ const ProfileInformation = ({
               {sex}
             </Text>
           </Flex>
-        </Flex>
+
+		  <Flex align='center' mb='18px'>
+            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+              Address:{" "}
+            </Text>
+            <Text fontSize='md' color='gray.500' fontWeight='400'>
+              9 rue des fleurs
+            </Text>
+          </Flex>
+
+
+		  <Flex align='center' mb='18px'>
+            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+              City:{" "}
+            </Text>
+            <Text fontSize='md' color='gray.500' fontWeight='400'>
+              Ottrott
+            </Text>
+          </Flex>
+
+		  <Flex align='center' mb='18px'>
+            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+              Postal code:{" "}
+            </Text>
+            <Text fontSize='md' color='gray.500' fontWeight='400'>
+              67210
+            </Text>
+          </Flex>
+
+		<Flex align='center' mb='18px'>
+            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+              Country:{" "}
+            </Text>
+            <Text fontSize='md' color='gray.500' fontWeight='400'>
+              France
+            </Text>
+          </Flex>
+
+		  <Flex align='center' mb='18px'>
+            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+              Reffering doctor:{" "}
+            </Text>
+            <Text fontSize='md' color='gray.500' fontWeight='400'>
+              Dr. Anne-Sophie HAMY
+            </Text>
+          </Flex>
+
+		  <Flex align='center' mb='18px'>
+            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+              General doctor:{" "}
+            </Text>
+            <Text fontSize='md' color='gray.500' fontWeight='400'>
+              Dr. Patrick MULLER
+            </Text>
+          </Flex>
+		  </Flex>
       </CardBody>
     </Card>
   );

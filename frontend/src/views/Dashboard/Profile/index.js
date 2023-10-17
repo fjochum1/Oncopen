@@ -11,7 +11,6 @@ import {
 	ModalCloseButton,
 	Button
 } from "@chakra-ui/react";
-import ProfileBgImage from "assets/img/BackgroundProfile.png";
 import React, { useState, useEffect } from "react";
 import { FaPenFancy } from "react-icons/fa";
 import Header from "./components/Header";
@@ -62,7 +61,6 @@ function Profile() {
 			{userData && (
 				<>
 					<Header
-						backgroundHeader={ProfileBgImage}
 						backgroundProfile={bgProfile}
 						firstname={userData.firstname || "N/A"}
 						name={userData.name || "N/A"}

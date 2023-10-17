@@ -8,6 +8,8 @@ import LogOut from "views/Auth/LogOut.js";
 import PatientRecord from 'views/Dashboard/Patients/PatientRecord/index';
 import PatientProfile from 'views/Dashboard/Patients/PatientProfile/index';
 import CarePathway from 'views/Dashboard/Patients/CarePathway/index';
+import G8 from "views/Dashboard/Tools/G8";
+import ARF from "views/Dashboard/Tools/ARF.js";
 
 import {
 	PersonIcon,
@@ -52,7 +54,29 @@ export function useRoutesPatient() {
 		//	],
 		//},
 		{
-			name: "ACCOUNT PAGES",
+            name: "Tools",
+            category: "tools",
+            state: "pageCollapse",
+            views: [
+                {
+                    path: "/G8",
+                    name: "G8",
+                    icon: <PersonIcon color="inherit" />,
+                    secondaryNavbar: true,
+                    component: G8,
+                    layout: "/patient",
+                },
+				{
+					path: "/ARF",
+					name: "Acute Renal Failure",
+					secondaryNavbar: true,
+					component: ARF,
+					layout: "/patient",
+				}
+            ],
+        },
+		{
+			name: "Account pages",
 			category: "account",
 			state: "pageCollapse",
 			views: [

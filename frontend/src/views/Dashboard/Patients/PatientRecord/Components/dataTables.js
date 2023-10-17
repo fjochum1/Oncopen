@@ -103,7 +103,7 @@ function SearchTable1(props) {
 						<Select
 							value={pageSize}
 							onChange={(e) => setPageSize(Number(e.target.value))}
-							color="gray.500"
+							color="black"
 							size="sm"
 							borderRadius="12px"
 							maxW="75px"
@@ -115,21 +115,21 @@ function SearchTable1(props) {
 							<option>20</option>
 							<option>25</option>
 						</Select>
-						<Text fontSize="xs" color="gray.400" fontWeight="normal">
+						<Text fontSize="xs" color="black" fontWeight="normal">
 							entries per page
 						</Text>
 					</Stack>
 					<Input
 						type="text"
 						placeholder="Search..."
-						minW="75px"
+						minW="230px"
 						maxW="175px"
 						fontSize="sm"
 						_focus={{ borderColor: "#94aca4" }}
 						onChange={(e) => setGlobalFilter(e.target.value)}
 					/>
 				</Flex>
-				<Table {...getTableProps()} variant="simple" color="gray.500" mb="24px">
+				<Table {...getTableProps()} variant="simple" color="black" mb="24px">
 					<Thead>
 						{headerGroups.map((headerGroup) => (
 							<Tr {...headerGroup.getHeaderGroupProps()}>
@@ -142,13 +142,13 @@ function SearchTable1(props) {
 											justify="space-between"
 											align="center"
 											fontSize={{ sm: "10px", lg: "12px" }}
-											color="gray.400"
+											color="black"
 										>
 											{column.render("Header")}
 											<Icon
 												w={{ sm: "10px", md: "14px" }}
 												h={{ sm: "10px", md: "14px" }}
-												color={columns.isSorted ? "gray.500" : "gray.400"}
+												color="color"
 												float="right"
 												as={
 													column.isSorted
@@ -195,7 +195,7 @@ function SearchTable1(props) {
 				>
 					<Text
 						fontSize="sm"
-						color="gray.500"
+						color="black"
 						fontWeight="normal"
 						mb={{ sm: "24px", md: "0px" }}
 					>
@@ -251,8 +251,8 @@ function SearchTable1(props) {
 										w="40px"
 										h="40px"
 										borderRadius="160px"
-										bg={pageNumber === pageIndex + 1 ? "#94aca4" : "#fff"}
-										border="1px solid lightgray"
+										bg={pageNumber === pageIndex + 1 ? "black" : "#fff"}
+										//border="1px solid lightgray"
 										_hover={{
 											bg: "gray.200",
 											opacity: "0.7",

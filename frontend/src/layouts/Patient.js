@@ -13,6 +13,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/lato';
 import '@fontsource/raleway';
+import '@fontsource/inconsolata/500.css';
+import '@fontsource/muli';
 // Custom Chakra theme
 import theme from 'theme/theme.js';
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin';
@@ -21,6 +23,7 @@ import MainPanel from '../components/Layout/MainPanel';
 import PanelContainer from '../components/Layout/PanelContainer';
 import PanelContent from '../components/Layout/PanelContent';
 import { useParams } from 'react-router-dom';
+import AuthNavbar from 'components/Navbars/AuthNavbar.js';
 
 export default function PatientLayout(props) {
 	const { id } = useParams();
@@ -82,6 +85,9 @@ export default function PatientLayout(props) {
 			if (prop.category === 'account') {
 				return getRoutes(prop.views);
 			}
+			if (prop.category === 'tools') {
+				return getRoutes(prop.views);
+			}
 			if (prop.layout === '/patient') {
 				return <Route path={prop.layout + prop.path} component={prop.component} key={key} />;
 			} else {
@@ -105,6 +111,7 @@ export default function PatientLayout(props) {
 				{...rest}
 			/>
 			<MainPanel
+				bg="rgba(249,249,249,255)"
 				w={{
 					base: '100%',
 					xl: 'calc(100% - 275px)'

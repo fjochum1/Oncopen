@@ -1,0 +1,63 @@
+.area-title {
+	display: inline-block;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.area-title::after {
+    background: #000 none repeat scroll 0 0;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    top: 24px;
+    width: 100%;
+}
+
+.area-title h2 {
+    color: #000000;
+    font-size: 22px;
+	letter-spacing: 3px;
+	font-family: "Lato",sans-serif;
+    margin-bottom: 40px;
+    padding: 0 10px;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 9;
+    background: #fff;
+}
+
+.title-box {
+    box-shadow: 0 0 0 10px #000000;
+    height: 80%;
+    left: 0;
+    position: absolute;
+    top: -10px;
+    width: 20%;
+    z-index: 1;
+}
+
+.custom-button {
+	position: relative;
+	overflow: hidden;
+  }
+
+  .custom-button::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #262626;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 0.3s ease-in-out;
+	z-index: -1;
+  }
+
+  .custom-button:hover::before {
+	transform: scaleX(1);
+	transform-origin: left;
+  }

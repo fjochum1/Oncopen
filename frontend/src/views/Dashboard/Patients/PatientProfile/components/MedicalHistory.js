@@ -1,11 +1,13 @@
 // Chakra imports
 import {
-  Avatar,
   Button,
   Icon,
   Flex,
   Text,
   useColorModeValue,
+  List,
+  ListItem,
+  UnorderedList
 } from "@chakra-ui/react";
 
 import { FaPencilAlt } from "react-icons/fa";
@@ -35,43 +37,42 @@ const openSettings = () => {
 
 
   return (
-    <Card p='16px'>
+    <Card p='16px'boxShadow="0px 3px 7px rgba(0, 0, 0, 0.09)">
       <CardHeader p='12px 5px' mb='12px' display='flex' justifyContent='space-between' alignItems='center'>
         <Text fontSize='lg' color={textColor} fontWeight='bold'>
           {title}
         </Text>
 
-        <Button
+        {/*<Button
         p='0px'
         bg='transparent'
         w='16px'
         h='16px'
         variant='no-hover'
-        ml='auto' // Aligne le bouton à droite
+        ml='auto'
         onClick={openSettings}
-        
+
       >
       <Icon as={FaPencilAlt} />
-     
-      </Button>
 
-        
+      </Button>*/}
+
+
       </CardHeader>
       <CardBody px='5px'>
         <Flex direction='column' w='100%'>
           <Flex justifyContent='space-between' mb='21px'>
             <Flex align='center'>
               <Flex direction='column'>
-                <Text fontSize='sm' color={textColor} fontWeight='bold'>
-                  {titleHistory}
-                </Text>
-                <Text fontSize='xs' color='gray.500' fontWeight='400'>
-                  {details.description}
-                </Text>
-              </Flex>     
+                <UnorderedList spacing={"10px"}>
+					<ListItem> Hypertension </ListItem>
+					<ListItem> Type 2 diabetes </ListItem>
+					<ListItem> Sleep apnea</ListItem>
+				</UnorderedList>
+              </Flex>
     </Flex>
     <>
-      <Button p='0px' bg='transparent' variant='no-hover' onClick={onOpen}>
+      {/*<Button p='0px' bg='transparent' variant='no-hover' onClick={onOpen}>
       <Text
                 fontSize='sm'
                 fontWeight='600'
@@ -80,9 +81,9 @@ const openSettings = () => {
                 DETAILS
               </Text>
 
-      </Button>
+      </Button>*/}
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
-       
+
         <ModalContent maxW="1100px">
           <ModalHeader>Details</ModalHeader>
           <ModalCloseButton />
@@ -92,7 +93,7 @@ const openSettings = () => {
                 </Text>
                 <Text fontSize='xs' color='gray.500' fontWeight='400'>
                   {details.description}
-        
+
 
                 </Text>
           </ModalBody>

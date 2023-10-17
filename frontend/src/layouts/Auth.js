@@ -11,6 +11,9 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/lato';
 import '@fontsource/raleway';
+import '@fontsource/inconsolata';
+import '@fontsource/inconsolata/500.css';
+import '@fontsource/muli';
 import theme from 'theme/theme.js';
 
 export default function Pages(props) {
@@ -81,7 +84,7 @@ export default function Pages(props) {
 	document.documentElement.dir = 'ltr';
 	return (
 		<ChakraProvider theme={theme} resetCss={false} w='100%'>
-			<Box ref={navRef} w='100%'>
+			<Box ref={navRef} w='100%' bg="rgba(249,249,249,255)">
 				<Portal containerRef={navRef}>
 					<AuthNavbar secondary={getActiveNavbar(routes)} />
 				</Portal>

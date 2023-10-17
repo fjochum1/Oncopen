@@ -10,10 +10,12 @@ export const globalStyles = {
 		global: (props) => ({
 			body: {
 				bg: mode('gray.50', 'gray.800')(props),
-				fontFamily: "'Raleway', sans-serif"
+				fontFamily: "'Muli', sans-serif",
+				fontWeight: '500'
 			},
 			html: {
-				fontFamily: "'Raleway', sans-serif"
+				fontFamily: "'Muli', sans-serif",
+				fontWeight: '500'
 			}
 		})
 	}

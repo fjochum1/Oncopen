@@ -10,13 +10,15 @@ import {
 } from "@chakra-ui/react";
 import IconBox from "components/Icons/IconBox";
 //import { CreativeTimLogo } from "components/Icons/Icons";
-import logo from 'assets/img/LogoOncopenGrey.png';
+import logo from 'assets/img/LogoOncohub.png';
 import { Separator } from "components/Separator/Separator";
 import React from "react";
 import { NavLink, useLocation, matchPath } from "react-router-dom";
 import useRoutes from "routes";
 import useRoutesPatient from "routesPatient";
 import '@fontsource/bebas-neue';
+import '@fontsource/lato';
+import '@fontsource/inconsolata';
 
 // this function creates the links and collapses that appear in the sidebar (left menu)
 
@@ -42,10 +44,11 @@ const SidebarContent = ({ logoText, layoutType, id }) => {
 
 	const createLinks = (routes) => {
 		// Chakra Color Mode
-		const activeBg = useColorModeValue("white", "gray.700");
-		const inactiveBg = useColorModeValue("#b3c3bb", "gray.700");
-		const activeColor = useColorModeValue("gray.700", "white");
-		const inactiveColor = useColorModeValue("gray.400", "gray.400");
+		//const activeBg = "rgba(251,232,217,0.6)";
+		const activeBg = useColorModeValue("rgba(249,249,249,255)", "white");
+		const inactiveBg = useColorModeValue("white", "gray.700");
+		const activeColor = useColorModeValue("black", "white");
+		const inactiveColor = useColorModeValue("black", "gray.400");
 
 		return routes.map((prop, key) => {
 			if (prop.redirect) {
@@ -57,10 +60,10 @@ const SidebarContent = ({ logoText, layoutType, id }) => {
 				return (
 					<div key={prop.name}>
 						<Text
-							color="gray.400"
-							fontFamily="Bebas Neue, sans-serif"
-							fontSize="24"
-							//fontWeight="bold"
+							color="black"
+							//fontFamily="lato, sans-serif"
+							fontSize="20"
+							fontWeight="bold"
 							//  mb={{
 							//    xl: "5px",
 							//  }}
@@ -99,7 +102,11 @@ const SidebarContent = ({ logoText, layoutType, id }) => {
 							}}
 							py="12px"
 							borderRadius="15px"
-							_hover="none"
+							_hover={{
+								".icon-box-hover": {
+									borderColor: "rgba(99, 135, 118, 0.8)"
+								}
+							}}
 							w="100%"
 							_active={{
 								bg: "inherit",
@@ -115,16 +122,22 @@ const SidebarContent = ({ logoText, layoutType, id }) => {
 									<Icon>{prop.icon}</Icon>
 								) : (
 									<IconBox
-										bg="#94aa9f"
-										color="white"
-										h="30px"
-										w="30px"
-										me="12px"
+										className="icon-box-hover"
+										bg="white"
+										color="black"
+										borderColor="black"
+										borderWidth="3px"
+										h="25px"
+										w="25px"
+										me="10px"
+										mr="-10px"
+										ml="-14px"
+										borderRadius="10px"
 									>
 										{prop.icon}
 									</IconBox>
 								)}
-								<Text color={activeColor} my="auto" fontSize="sm">
+								<Text color={activeColor} ml="25px" my="auto" fontSize="sm">
 									{document.documentElement.dir === "rtl"
 										? prop.rtlName
 										: prop.name}
@@ -161,7 +174,7 @@ const SidebarContent = ({ logoText, layoutType, id }) => {
 							}}
 						>
 							<Flex>
-								{typeof prop.icon === "string" ? (
+								{/*{typeof prop.icon === "string" ? (
 									<Icon>{prop.icon}</Icon>
 								) : (
 									<IconBox
@@ -173,8 +186,8 @@ const SidebarContent = ({ logoText, layoutType, id }) => {
 									>
 										{prop.icon}
 									</IconBox>
-								)}
-								<Text color={inactiveColor} my="auto" fontSize="sm">
+								)}*/}
+								<Text color={inactiveColor} ml="25px" my="auto" fontSize="sm">
 									{document.documentElement.dir === "rtl"
 										? prop.rtlName
 										: prop.name}

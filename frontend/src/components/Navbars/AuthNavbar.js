@@ -15,7 +15,7 @@ import {
   PersonIcon,
   RocketIcon,
 } from "components/Icons/Icons";
-import logoOncopen from 'assets/img/LogoOncopenGrey.png';
+import logoOncohub from 'assets/img/LogoOncohub.png';
 import SidebarResponsive from "components/Sidebar/SidebarResponsive";
 import PropTypes from "prop-types";
 import React from "react";
@@ -80,7 +80,7 @@ export default function AuthNavbar(props) {
       alignItems="center"
       color={mainText}
     >
-      <img src={logoOncopen} alt="Logo" width="220px" height="220px" />
+      <img src={logoOncohub} alt="Logo" width="220px" height="220px" />
       {/*<Text fontSize="sm" mt="3px">
         {logoText}
       </Text>*/}

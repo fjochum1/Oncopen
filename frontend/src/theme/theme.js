@@ -35,7 +35,14 @@ const theme = extendTheme(
 							}
 						}
 					}
+				},
 			},
+			Progress: {
+				baseStyle: {
+					filledTrack: {
+						bg: "rgba(99, 135, 118, 0.8)"
+					}
+				}
 			},
 			Radio: {
 				baseStyle: {

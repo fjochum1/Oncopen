@@ -1,5 +1,5 @@
 // Chakra imports
-import { ChakraProvider, Portal, useDisclosure, Button, Flex} from '@chakra-ui/react';
+import { ChakraProvider, Portal, useDisclosure, Button, Flex, Box} from '@chakra-ui/react';
 import Configurator from 'components/Configurator/Configurator';
 import Footer from 'components/Footer/Footer.js';
 // Layout components
@@ -13,6 +13,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/lato';
 import '@fontsource/raleway';
+import '@fontsource/inconsolata/500.css';
+import '@fontsource/muli';
 // Custom Chakra theme
 import theme from 'theme/theme.js';
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin';
@@ -70,12 +72,16 @@ export default function Dashboard(props) {
 		}
 		return activeNavbar;
 	};
+
 	const getRoutes = (routes) => {
-		return routes.map((prop, key) => {
+		const resolvedRoutes = routes.map((prop, key) => {
 			if (prop.collapse) {
 				return getRoutes(prop.views);
 			}
 			if (prop.category === 'account') {
+				return getRoutes(prop.views);
+			}
+			if (prop.category === 'tools') {
 				return getRoutes(prop.views);
 			}
 			if (prop.layout === '/admin') {
@@ -84,7 +90,9 @@ export default function Dashboard(props) {
 				return null;
 			}
 		});
+   		return resolvedRoutes;
 	};
+
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	document.documentElement.dir = 'ltr';
 	// Chakra Color Mode
@@ -99,6 +107,7 @@ export default function Dashboard(props) {
 				{...rest}
 			/>
 			<MainPanel
+				bg="rgba(249,249,249,255)"
 				w={{
 					base: '100%',
 					xl: 'calc(100% - 275px)'
